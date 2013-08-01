@@ -11,7 +11,7 @@ public class HelloController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String sayHello(Model model) {
-		model.addAttribute("message", "This is emty Spring + Hibernate project bla bla bla");
+		model.addAttribute("message", "This is emty Spring + Hibernate project dunyasha like beer!");
 		return "index";
 	}
 }
