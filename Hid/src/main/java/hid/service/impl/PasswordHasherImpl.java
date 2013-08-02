@@ -40,7 +40,6 @@ public class PasswordHasherImpl implements PasswordHasher {
 
 	@Override
 	public String getSalt() {
-		String salt = null;
 		if (salt == null) {
 			salt = generateSalt();
 		}
