@@ -10,6 +10,7 @@ public class PasswordHasherImpl implements PasswordHasher {
 	
 	private int saltLength;
 	private String password;
+	private String salt;
 	
 	public PasswordHasherImpl(String password, int saltLength) {
 		super();
@@ -18,7 +19,7 @@ public class PasswordHasherImpl implements PasswordHasher {
 	}
 	
 	@Override
-	public String getSalt() {
+	public String generateSalt() {
 		return randomAlphanumeric(saltLength);
 	}
 	
@@ -31,10 +32,19 @@ public class PasswordHasherImpl implements PasswordHasher {
 	public String hashPassword() {
 		return hashPassword(getSalt());		
 	}
-	
+
 	@Override	
 	public boolean isPasswordCorrect(String hashPassword, String salt) {
 		return hashPassword(salt).equals(hashPassword);
+	}
+
+	@Override
+	public String getSalt() {
+		String salt = null;
+		if (salt == null) {
+			salt = generateSalt();
+		}
+		return salt;
 	}
 
 	public int getSaltLength() {
