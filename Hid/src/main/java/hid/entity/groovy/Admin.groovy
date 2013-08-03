@@ -27,8 +27,5 @@ class Admin {
 	
 	@NotEmpty
 	@Column(name = "SALT", nullable = false)
-	int salt
-	
-	Admin(){}
-
+	String salt
 }

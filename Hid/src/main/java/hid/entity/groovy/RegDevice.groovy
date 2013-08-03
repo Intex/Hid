@@ -19,16 +19,13 @@ class RegDevice {
 	
 	@NotEmpty
 	@Column(name = "ID_DEVICE", nullable = false)
-	long id_device
+	long deviceId
 	
 	@NotEmpty
 	@Column(name = "REG_DATE", nullable = false)
-	Date reg_date
+	Date registrationDate
 	
 	@NotEmpty
 	@Column(name = "END_LICENSE", nullable = false)
-	Date end_license
-	
-	RegDevice(){}
-
+	Date endLicenseDate
 }

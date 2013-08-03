@@ -9,7 +9,7 @@ import org.junit.Assert;
 public class TestPasswordHashing {
 	@Test
 	public void testPasswordHashing() {
-		String password = "123";
+		String password = "password";
 		PasswordHasher hasher = new PasswordHasherImpl(password, 1000);
 		String salt = hasher.getSalt();
 		

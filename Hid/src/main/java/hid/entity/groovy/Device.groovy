@@ -19,11 +19,9 @@ class Device {
 
 	@NotEmpty
 	@Column(name = "VENDOR_ID", nullable = false)
-	int vendor_id
+	int vendorId
 	
 	@NotEmpty
 	@Column(name = "PRODUCT_ID", nullable = false)
-	int product_id
-	
-	Device(){}
+	int productId	
 }

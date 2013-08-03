@@ -22,7 +22,7 @@ class Connection {
 	
 	@NotEmpty
 	@Column(name = "ID_DEVICE", nullable = false)
-	long id_device
+	long deviceId
 	
 	@NotEmpty
 	@Column(name = "DATE", nullable = false)
@@ -41,8 +41,6 @@ class Connection {
 	String city
 	
 	@NotEmpty
-	@Column(name = "TIME_CONNECTION", nullable = false)
-	int time_connection
-	
-	Connection(){}
+	@Column(name = "CONNECTION_TIME", nullable = false)
+	int connectionTime
 }
