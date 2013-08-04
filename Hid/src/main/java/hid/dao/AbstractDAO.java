@@ -2,6 +2,8 @@ package hid.dao;
 
 import java.util.List;
 
+
+
 public interface AbstractDAO<E> { // E is entity type
 
 	E findById(long id);

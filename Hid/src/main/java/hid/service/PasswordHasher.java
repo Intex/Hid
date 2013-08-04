@@ -1,9 +1,8 @@
 package hid.service;
 
 public interface PasswordHasher {
-	String generateSalt();
-	String hashPassword();
-	String hashPassword(String salt);
-	boolean isPasswordCorrect(String hashPassword, String salt);
+	String hashPassword(String password);
+	String hashPassword(String password, String salt);
+	boolean isPasswordCorrect(String password, String hashPassword, String salt);
 	String getSalt();
 }

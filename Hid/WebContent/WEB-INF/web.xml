@@ -7,12 +7,18 @@
 	<welcome-file-list>
 		<welcome-file>/</welcome-file>
 	</welcome-file-list>
-
+	
+	
+	<!-- st -->
 	<context-param>
 		<param-name>contextClass</param-name>
 		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
 	</context-param>
-	
+
+	<listener>
+		<listener-class>hid.listener.WebAppPropertiesListener</listener-class>
+	</listener>
+
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

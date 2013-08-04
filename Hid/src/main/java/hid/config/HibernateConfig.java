@@ -16,7 +16,7 @@ public class HibernateConfig {
 	public BasicDataSource getDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-		dataSource.setUrl("jdbc:hsqldb:file:persons;shutdown=true");
+		dataSource.setUrl("jdbc:hsqldb:file:${webroot}/hiddb;shutdown=true");
 		dataSource.setUsername("SA");
 		dataSource.setPassword("");
 		return dataSource;
