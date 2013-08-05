@@ -9,7 +9,7 @@
 	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry excluding="java/|resources/|resources/|resources/|resources/" kind="src" path="src/main"/>
+	<classpathentry excluding="java/|resources/|resources/|resources/|resources/|resources/" kind="src" path="src/main"/>
 	<classpathentry kind="src" path="WebContent/WEB-INF/configs"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
