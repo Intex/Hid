@@ -48,6 +48,10 @@ public class AdminController {
 	public ModelAndView addAdminPage() {
 		ModelAndView model = new ModelAndView("addAdmin");
 		model.addObject("admin", emptyAdmin);
+		/* if (!adminService.isLogIn(session)) {
+			model.setViewName("redirect:login");
+			return model;
+		} */
 		model.addObject("adminList", adminService.getAll());
 		return model;
 	}
