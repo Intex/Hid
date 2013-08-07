@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>addAdmin</title>
 </head>
+${sessionScope.login}
 <body>
 	<form:form action="" commandName="admin" method="POST">
 Login: <form:input path="login" />
@@ -29,7 +30,7 @@ Confirm: <form:password path="confirmPassword" />
 	</spring:bind>
 
 	<core:forEach items="${adminList}" var="admin">
-		${admin.login}<br />
+		${admin.login}<a href="/Hid/deleteAdmin?id=${admin.id}">X</a><br />
 	</core:forEach>
 </body>
 </html>

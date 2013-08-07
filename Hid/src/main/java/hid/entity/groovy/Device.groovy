@@ -6,6 +6,8 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Table
+import javax.validation.constraints.NotNull;
+
 import static javax.persistence.GenerationType.IDENTITY
 
 @Entity
@@ -17,11 +19,11 @@ class Device {
 	@Column(name = "ID_DEVICE", nullable = false)
 	long id
 
-	@NotEmpty
+	@NotNull
 	@Column(name = "VENDOR_ID", nullable = false)
 	int vendorId
 	
-	@NotEmpty
+	@NotNull
 	@Column(name = "PRODUCT_ID", nullable = false)
 	int productId	
 }
