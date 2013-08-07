@@ -4,9 +4,9 @@ import hid.entity.groovy.Admin;
 import hid.service.AdminService;
 import hid.service.PasswordHasher;
 import hid.validation.AddAdminFormValidationGroup;
+import hid.validation.LoginFormValidationGroup;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -33,7 +34,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView logIn(@Valid Admin admin, BindingResult result, HttpSession session) {
+	public ModelAndView logIn(@Validated({LoginFormValidationGroup.class}) Admin admin, BindingResult result, HttpSession session) {
 		if (!result.hasErrors()) {
 			Admin dbAdmin = adminService.findByLogin(admin.getLogin());
 			System.out.println(dbAdmin.getLogin());
@@ -71,6 +72,14 @@ public class AdminController {
 		model.addObject("adminList", adminService.getAll());
 		return model;
 	}
+	
+	@RequestMapping(value = "/deleteAdmin", method = RequestMethod.GET)
+	public String deleateAdmine(@RequestParam long id) {
+		adminService.delete(id);
+		return "redirect:addAdmin";
+	}
+	
+	
 	
 
 }

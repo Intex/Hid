@@ -30,7 +30,7 @@ Confirm: <form:password path="confirmPassword" />
 	</spring:bind>
 
 	<core:forEach items="${adminList}" var="admin">
-		${admin.login}<br />
+		${admin.login}<a href="/Hid/deleteAdmin?id=${admin.id}">X</a><br />
 	</core:forEach>
 </body>
 </html>
