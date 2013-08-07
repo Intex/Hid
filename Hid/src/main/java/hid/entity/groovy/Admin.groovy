@@ -15,7 +15,8 @@ import javax.persistence.Transient
 
 import static javax.persistence.GenerationType.IDENTITY
 
-import hid.validation.AddAdminFormValidationGroup;
+import hid.validation.AddAdminFormValidationGroup
+import hid.validation.LoginFormValidationGroup
 import hid.validation.annotation.FieldMatch
 
 @Entity
@@ -28,13 +29,13 @@ class Admin {
 	@Column(name = "ID_ADMIN", nullable = false)
 	long id
 	
-	@NotEmpty
-	@Length(min = 4, max = 16)
+	@NotEmpty(groups = [AddAdminFormValidationGroup.class, LoginFormValidationGroup.class])
+	@Length(min = 4, max = 16, groups = [AddAdminFormValidationGroup.class, LoginFormValidationGroup.class])
 	@Column(name = "LOGIN", length = 32, nullable = false)
 	String login
 	
-	@NotEmpty
-	@Length(min = 4, max = 16)
+	@NotEmpty(groups = [AddAdminFormValidationGroup.class, LoginFormValidationGroup.class])
+	@Length(min = 4, max = 16, groups = [AddAdminFormValidationGroup.class, LoginFormValidationGroup.class])
 	@Transient
 	String password
 	
