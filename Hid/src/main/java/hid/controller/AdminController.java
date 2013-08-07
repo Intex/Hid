@@ -38,22 +38,27 @@ public class AdminController {
 			Admin dbAdmin = adminService.findByLogin(admin.getLogin());
 			System.out.println(dbAdmin.getLogin());
 			if (dbAdmin != null && passwordHasher.isPasswordCorrect(admin.getPassword(), dbAdmin.getHashPassword(), dbAdmin.getSalt())) {
-				return addAdminPage();
+				adminService.logIn(session, dbAdmin);
+				return addAdminPage(session);
 			}
 		}
 		return new ModelAndView("login", "admin", admin);
 	}
 
 	@RequestMapping(value = "/addAdmin", method = RequestMethod.GET)
-	public ModelAndView addAdminPage() {
-		ModelAndView model = new ModelAndView("addAdmin");
+	public ModelAndView addAdminPage(HttpSession session) {
+		ModelAndView model = new ModelAndView();
 		model.addObject("admin", emptyAdmin);
+		if (!adminService.isLogIn(session)) {
+			model.setViewName("redirect:login");
+			return model;
+		}		
 		model.addObject("adminList", adminService.getAll());
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/addAdmin", method = RequestMethod.POST)
-	public ModelAndView addAdmin(@Validated({AddAdminFormValidationGroup.class}) Admin admin, BindingResult result) {
+	public ModelAndView addAdmin(@Validated({AddAdminFormValidationGroup.class}) Admin admin, BindingResult result, HttpSession session) {
 		ModelAndView model = new ModelAndView("addAdmin");
 		if (result.hasErrors()) {
 			model.addObject("admin", admin);
