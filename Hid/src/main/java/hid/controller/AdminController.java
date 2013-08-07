@@ -56,7 +56,7 @@ public class AdminController {
 		model.addObject("adminList", adminService.getAll());
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/addAdmin", method = RequestMethod.POST)
 	public ModelAndView addAdmin(@Validated({AddAdminFormValidationGroup.class}) Admin admin, BindingResult result) {
 		ModelAndView model = new ModelAndView("addAdmin");
@@ -74,7 +74,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/deleteAdmin", method = RequestMethod.GET)
-	public String deleateAdmine(@RequestParam long id) {
+	public String deleteAdmin(@RequestParam long id) {
 		adminService.delete(id);
 		return "redirect:addAdmin";
 	}
