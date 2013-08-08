@@ -1,10 +1,18 @@
 package com.intexsoft.sensor;
 
 import com.google.gson.Gson;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * User: sergey.berdashkevich
@@ -37,5 +45,54 @@ public class HessianClient {
         String message = gson.fromJson(jsonData, String.class);
 
         return message;
+    }
+
+    public void sendData()  {
+        User user = new User("qwe", "qwerty");
+        Gson gson = new Gson();
+        String jsonData = gson.toJson(user);
+
+        HttpClient httpClient = new DefaultHttpClient();
+
+        try {
+            HttpPost request = new HttpPost("http://localhost:8080/service/api/sendData");
+//            StringEntity params =new StringEntity("details={\"name\":\"myname\",\"age\":\"20\"} ");
+            StringEntity params =new StringEntity(jsonData);
+            request.addHeader("content-type", "application/json");
+            request.setEntity(params);
+            HttpResponse response = httpClient.execute(request);
+
+            // handle response here...
+        }catch (Exception ex) {
+            // handle exception here
+        } finally {
+            httpClient.getConnectionManager().shutdown();
+        }
+    }
+
+    public class User   {
+        String password;
+        String userName;
+
+        public User(String password, String userName) {
+            this.password = password;
+            this.userName = userName;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
     }
 }
