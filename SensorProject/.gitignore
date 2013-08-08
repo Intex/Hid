@@ -1,0 +1,21 @@
+# IDE Files #
+bin
+target
+.settings
+.classpath
+.project
+*.iml
+.idea
+
+# Java Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Other Files (like logs)#
+
+# libs #
+#!lib.jar#

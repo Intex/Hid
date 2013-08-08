@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.intexsoft.sensor</groupId>
+        <artifactId>SensorProject</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>JNLP</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>JNLP</name>
+    <url>http://maven.apache.org</url>
+
+    <repositories>
+        <repository>
+            <id>springsource-repo</id>
+            <name>SpringSource Repository</name>
+            <url>http://repo.springsource.org/release</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.maven.snapshot</id>
+            <url>http://maven.springframework.org/snapshot/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.jnlp</groupId>
+            <artifactId>jnlp-api</artifactId>
+            <version>6.0</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/lib/javaws.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.13</version>
+        </dependency>
+        <dependency>
+            <groupId>jfree</groupId>
+            <artifactId>jcommon</artifactId>
+            <version>1.0.16</version>
+        </dependency>
+        <dependency>
+            <groupId>com.intexsoft.sensor</groupId>
+            <artifactId>CommonAPI</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>3.2.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>3.2.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <scope>runtime</scope>
+            <version>4.0.7</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>webstart-maven-plugin</artifactId>
+                <version>1.0-beta-3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jnlp</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jnlp>
+                        <inputTemplateResourcePath>${project.basedir}</inputTemplateResourcePath>
+                        <inputTemplate>/properties/jnlp-template.vm</inputTemplate>
+                        <outputFile>app.jnlp</outputFile>
+                        <mainClass>com.intexsoft.sensor.Runner</mainClass>
+                    </jnlp>
+                    <sign>
+                        <keystoreConfig>
+                           <delete>true</delete>
+                           <gen>true</gen>
+                        </keystoreConfig>
+
+                        <keystore>${project.basedir}/target/testkey</keystore>
+                        <keypass>123456</keypass>
+                        <storepass>123456</storepass>
+                        <alias>testkey</alias>
+
+                        <dnameCn>Serg Berd</dnameCn>
+                        <dnameOu>Intexsoft</dnameOu>
+                        <dnameO>Intexsoft</dnameO>
+                        <dnameL>Bel</dnameL>
+                        <dnameSt>Gr</dnameSt>
+                        <dnameC>BY</dnameC>
+                        <validity>18000</validity>
+
+                        <verify>true</verify>
+                    </sign>
+                    <libPath>lib</libPath>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>native</directory>
+                <targetPath>native</targetPath>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
+</project>
