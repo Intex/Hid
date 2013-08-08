@@ -109,6 +109,20 @@ public class Runner {
 
         getDataButton.addActionListener(dataListener);
 
+        JButton sendDataButton = new JButton("Send Data!");
+
+        ActionListener sendDataListener = new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    hessianClient.sendData();
+                } catch (Exception e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
+            }
+        };
+
+        sendDataButton.addActionListener(sendDataListener);
+
 //        content.add(startButton, BorderLayout.SOUTH);
 //        content.add(stopButton, BorderLayout.EAST);
 
@@ -123,14 +137,17 @@ public class Runner {
                 .addComponent(startButton)
                 .addComponent(stopButton)
                 .addComponent(getDataButton)
+                .addComponent(sendDataButton)
                 .addGroup(bottomLayot.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addComponent(startButton)
                         .addComponent(stopButton)
-                        .addComponent(getDataButton)));
+                        .addComponent(getDataButton)
+                        .addComponent(sendDataButton)));
         bottomLayot.setHorizontalGroup(bottomLayot.createSequentialGroup()
                 .addComponent(startButton)
                 .addComponent(stopButton)
-                .addComponent(getDataButton));
+                .addComponent(getDataButton)
+                .addComponent(sendDataButton));
 
 
         content.add(bottomContainer, BorderLayout.SOUTH);
