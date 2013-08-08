@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="$encoding"?>
 <jnlp
         spec="$jnlpspec"
-        codebase="http://localhost:8080/AdminUI-1.0-SNAPSHOT/"
+        codebase="http://localhost:8080/AdminUI/"
         href="$outputFile">
     <information>
         #if($project.Name)
@@ -17,7 +17,7 @@
             <description>$project.Description</description>
         #end
 
-            <vendor>Intexsoft</vendor>
+        <vendor>Intexsoft</vendor>
 
 
         #if($offlineAllowed)
