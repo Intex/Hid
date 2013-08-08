@@ -99,7 +99,11 @@ public class Runner {
 
         ActionListener dataListener = new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-                System.out.println(hessianClient.getData());
+                try {
+                    System.out.println(hessianClient.getData());
+                } catch (Exception e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
             }
         };
 

@@ -6,7 +6,7 @@
     <display-name>Equilibrium</display-name>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:META-INF/spring/*.xml</param-value>
+        <param-value>/WEB-INF/applicationContext*.xml</param-value>
     </context-param>
 
     <listener>
@@ -14,13 +14,13 @@
     </listener>
 
     <servlet>
-        <servlet-name>hessian</servlet-name>
+        <servlet-name>service</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>hessian</servlet-name>
-        <url-pattern>/hessian/*</url-pattern>
+        <servlet-name>service</servlet-name>
+        <url-pattern>/service/*</url-pattern>
     </servlet-mapping>
 </web-app>

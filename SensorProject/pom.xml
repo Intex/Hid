@@ -10,9 +10,7 @@
 
     <modules>
         <module>AdminUI</module>
-        <module>CommonAPI</module>
         <module>JNLP</module>
-        <module>Services</module>
         <module>Builder</module>
         <module>Persistence</module>
     </modules>

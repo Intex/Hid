@@ -4,5 +4,5 @@ package com.intexsoft.sensor;
  * Hello world!
  *
  */
-public class App 
+public class App
 {}

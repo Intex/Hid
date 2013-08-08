@@ -24,12 +24,5 @@
             <unpack>true</unpack>
             <scope>runtime</scope>
         </dependencySet>
-        <!--dependencySet> NOT YET IN CENTRAL REPOSITORY
-          <outputDirectory>WEB-INF/lib</outputDirectory>
-          <includes>
-            <include>com.sun.java.jnlp:jnlp-servlet</include>
-          </includes>
-          <scope>runtime</scope>
-        </dependencySet-->
     </dependencySets>
 </assembly>

@@ -2,9 +2,4 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <bean name="/commonAPIService" class="org.springframework.remoting.caucho.HessianServiceExporter">
-        <property name="service" ref="commonAPIService"/>
-        <property name="serviceInterface" value="com.intexsoft.sensor.CommonAPI"/>
-    </bean>
 </beans>
