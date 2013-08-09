@@ -1,214 +1,17 @@
 package main;
 
-import java.awt.*;
-import java.util.Random;
-import javax.swing.*;
+import java.awt.Dimension;
 
+import javax.swing.JApplet;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.SwingUtilities;
 
+public class MainApplet extends JApplet {
 
-public class MainApplet extends JApplet{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	// delete||change
-	int n=4+new Random().nextInt(8);
-	boolean ind= new Random().nextBoolean();
-
-	private JLabel selectDevice() {
-		JLabel labelDevices=new JLabel("Select your device: "); 
-		return labelDevices;
-	}
-
-	private JComboBox arrayDevice(int n){
-		String [] data= new String[n];
-		for(int i=0; i<data.length;i++){
-			data[i]=new String("devices_"+i);
-		}
-		JComboBox box=new JComboBox(data);
-		return box;
-	}
-
-	private JLabel indicator(){	
-		JLabel labelIndicator= new JLabel();
-
-		ImageIcon indicator;
-		String string;
-
-		if(ind==false) {
-			indicator= new ImageIcon("false.jpg");
-			string="not connected";
-		}
-		else {
-			indicator = new ImageIcon("true.jpg");
-			string="connected";
-		}
-		
-		labelIndicator.setPreferredSize(new Dimension(22, 22));
-		labelIndicator.setIcon(indicator);
-		labelIndicator.setToolTipText(string);
-		
-		return labelIndicator;
-	}
-	
-	private JLabel validDate(){	
-		JLabel labelIndicator = new JLabel();
-		
-		String string;
-		ImageIcon indicator;
-
-		if(ind==false){
-			indicator = new ImageIcon("incorrect.jpg");
-			string="the data is not correct";
-		}
-		else{
-			indicator = new ImageIcon("correct.jpg");
-			string="the data is correct";
-		}
-		
-		labelIndicator.setIcon(indicator);
-		labelIndicator.setToolTipText(string);
-		
-		return labelIndicator;
-	}
-
-	private JLabel selectLocation() {
-		JLabel labelDevices=new JLabel("Select your loacation: "); 
-		return labelDevices;
-	}
-
-	private JButton getButtonStart() {
-		JButton buttonStart=new JButton();
-		buttonStart.setName("Start/Stop");
-		buttonStart.setText("Start/Stop");
-		return buttonStart;
-	}
-
-	private JButton getButtonOk() {
-		JButton button=new JButton();
-		button.setName("Ok");
-		button.setText("Ok");
-		return button;
-	}
-
-	private JComboBox changeCity(){
-		JComboBox boxCity= new JComboBox();
-		String[] array={"Сity0","Сity1"};
-		boxCity = new JComboBox(array);				
-		return boxCity;
-	}
-
-	private JComboBox changeCountry(){
-		JComboBox boxCountry= new JComboBox();
-		String[] array={"Country0","Country1"};
-		boxCountry = new JComboBox(array);				
-		return boxCountry;
-	}
-
-	private JLabel grapphics(){
-		ImageIcon image= new ImageIcon("gr.jpg");
-		JLabel jLabel= new JLabel(image);
-		jLabel.setPreferredSize(new Dimension(600, 265));
-		return jLabel;
-	}
-
-	private JLabel infConnect(){
-		JLabel jLabel= new JLabel();
-		String inf="Connected...Connected...Connected...Connected...";
-		jLabel.setText(inf);
-		return jLabel;
-	}
-
-	private JLabel help() {
-		// TODO Auto-generated method stub
-		JLabel jLabel= new JLabel();
-		String help = "Help...";
-		jLabel.setText(help);
-		return jLabel;
-	}
-
-	public void	addComponentsToMainPanel(JPanel pane) {
-
-		pane.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.insets = new Insets(10,20,0,20);
-
-		c.gridx = 0;
-		c.gridy = 1;
-		pane.add(getButtonStart(), c);
-		
-		c.gridx = 3;
-		c.gridy = 1;
-		pane.add(validDate(), c);
-
-		c.ipady = 40;     
-		c.weightx = 0.0;
-		c.gridwidth = 5;
-		c.gridx = 0;
-		c.gridy = 2;
-		pane.add(grapphics(), c);
-
-		c.ipady = 0;      
-		c.weighty = 1.0;  
-		c.anchor = GridBagConstraints.PAGE_END;
-		c.gridx = 1;       
-		c.gridwidth = 2;   
-		c.gridy = 3;       
-		pane.add(infConnect(), c);
-		
-		c.gridx = 3;
-		c.gridy = 3;
-		pane.add(indicator(), c);
-	}
-
-
-	public void	addComponentsToSettings(JPanel pane) {
-
-		pane.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.2;
-		c.insets = new Insets(10,20,0,20);
-
-		c.gridx = 1;
-		c.gridy = 1;
-		pane.add(selectLocation(), c);
-
-		c.gridx = 1;
-		c.gridy = 2;
-		pane.add(changeCountry(), c);
-
-		c.weightx = 0.5;
-		c.gridx = 1;
-		c.gridy = 3;
-		pane.add(changeCity(), c);
-
-		c.gridx = 2;
-		c.gridy = 3;
-		pane.add(getButtonOk(), c);
-
-		c.gridx = 1;
-		c.gridy = 5;
-		pane.add(selectDevice(), c);		
-
-		c.gridx = 1;
-		c.gridy = 6;
-		pane.add(arrayDevice(n), c);
-
-		c.ipady = 0;      
-		c.weighty = 1.0;  
-		c.anchor = GridBagConstraints.PAGE_END;
-		c.gridx = 1;       
-		c.gridwidth = 2;   
-		c.gridy = 7;       
-		pane.add(help(), c);
-		
-	}
+	private static final long serialVersionUID = 7536899015922113327L;
 
 	@Override
 	public void init() {
@@ -216,11 +19,21 @@ public class MainApplet extends JApplet{
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
 				public void run() {
-					JPanel main = new JPanel();
-					JPanel settings = new JPanel();
+					JButton startButton = new JButton();
+					startButton.setName("Start/Stop");
+					startButton.setText("Start/Stop");
+					
+					Indicator validDataIndicator = new Indicator(null, "valid data", "correct.jpg", "incorrect.jpg");
+					validDataIndicator.setOn(true);
 
-					addComponentsToMainPanel(main);
-					addComponentsToSettings(settings);
+					Indicator connectionIndicator = new Indicator(new Dimension(22, 22), "connection", "true.jpg", "false.jpg");
+					connectionIndicator.setOn(true);
+					
+					JLabel connectionInfoLabel = new JLabel();
+					connectionInfoLabel.setText("Connected...Connected...Connected...Connected...");
+					
+					JPanel main = new MainPanel(startButton, validDataIndicator, connectionIndicator, connectionInfoLabel);
+					JPanel settings = new SettingsPanel();
 
 					JTabbedPane jtp = new JTabbedPane();
 
@@ -231,6 +44,6 @@ public class MainApplet extends JApplet{
 			});
 		} catch (Exception e) {
 			System.err.println("createGUI didn't complete successfully");
-		}	
+		}
 	}
 }
