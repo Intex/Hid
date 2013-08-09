@@ -39,8 +39,6 @@ public class Runner {
             fieldSysPath.setAccessible(true);
             fieldSysPath.set(null, null);
 
-//           System.loadLibrary("libusb-1.0");
-//          System.loadLibrary("WheelInput");
             ClassPathLibraryLoader.loadNativeHIDLibrary();
         } catch (UnsatisfiedLinkError e) {
             System.out.println("Lib isn't found: " + e.getMessage());
@@ -102,7 +100,7 @@ public class Runner {
                 try {
                     System.out.println(hessianClient.getData());
                 } catch (Exception e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    e.printStackTrace();
                 }
             }
         };
@@ -116,16 +114,12 @@ public class Runner {
                 try {
                     hessianClient.sendData();
                 } catch (Exception e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    e.printStackTrace();
                 }
             }
         };
 
         sendDataButton.addActionListener(sendDataListener);
-
-//        content.add(startButton, BorderLayout.SOUTH);
-//        content.add(stopButton, BorderLayout.EAST);
-
         JPanel bottomContainer = new JPanel();
         bottomContainer.setBorder(BorderFactory.createEtchedBorder());
 
@@ -212,11 +206,11 @@ public class Runner {
         }
 
         public void run() {
-            int position = 0x80;
+            int position;
             stop = false;
             while (!stop) {
                 position = getData();
-                this.position = position;
+                HelloRunnable.position = position;
                 label.setText(String.valueOf(position));
 
                 wheelPanel.setAngle(position);
@@ -225,18 +219,26 @@ public class Runner {
                 graphPanel.getSeries().add(new Millisecond(), position - 128);
 
                 try {
-                    this.sleep(20);
+                    sleep(20);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    e.printStackTrace();
                 }
             }
         }
 
         public static int getData() {
+            int result = -301;
             UsbAdapter adapter = new UsbAdapter();
-//            String s = adapter.openDevice();
-//            System.out.println(s);
-            return adapter.getPosition();
+            String s = adapter.openDevice();
+
+            if (s != null) {
+                System.out.println(s);
+            } else {
+                result = adapter.getPosition();
+            }
+
+            adapter.closeDevice();
+            return result;
         }
     }
 
