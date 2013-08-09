@@ -13,7 +13,7 @@ extern "C" {
  * Signature: ()I
  */
 JNIEXPORT jint JNICALL Java_com_intexsoft_sensor_usb_UsbAdapter_getPosition
-  (JNIEnv *, jobject);
+  (JNIEnv *, jobject obj);
 
 /*
  * Class:     com_intexsoft_sensor_usb_UsbAdapter

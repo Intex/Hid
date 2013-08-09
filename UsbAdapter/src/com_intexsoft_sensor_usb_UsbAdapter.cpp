@@ -32,7 +32,7 @@ extern "C" {
  * Initialize and handle device.
  * Return error message or empty string.
  */
-JNIEXPORT jstring JNICALL Java_com_intexsoft_sensor_usb_UsbAdapter_openDevicee(JNIEnv *jEnv, jobject)
+JNIEXPORT jstring JNICALL Java_com_intexsoft_sensor_usb_UsbAdapter_openDevice(JNIEnv *jEnv, jobject)
 {
     // return to Java
     jstring result = NULL;
@@ -108,14 +108,21 @@ JNIEXPORT jstring JNICALL Java_com_intexsoft_sensor_usb_UsbAdapter_openDevicee(J
  * NB! Before need call openDevice().
  * Get current position.
  */
-JNIEXPORT jint JNICALL Java_com_intexsoft_sensor_usb_UsbAdapter_getPosition(JNIEnv *jEnv, jobject)
+JNIEXPORT jint JNICALL Java_com_intexsoft_sensor_usb_UsbAdapter_getPosition(JNIEnv *jEnv, jobject obj)
 {
-    // if devace is not initialized - return
+    // if devace is not initialized
     if (!isInitialize)
     {
-        // valid data is 00..FF (for Java -128..127)
-        // other value is error
-        return ERROR_DEVICE_IS_NOT_INIT;
+        // try initialize
+        jstring message = Java_com_intexsoft_sensor_usb_UsbAdapter_openDevice(jEnv, obj);
+
+        // has error message - return
+        if(message != NULL)
+        {
+            // valid data is 00..FF (for Java -128..127)
+            // other value is error
+            return ERROR_DEVICE_IS_NOT_INIT;
+        }
     }
 
     // returned value to Java
@@ -149,6 +156,9 @@ JNIEXPORT jstring JNICALL Java_com_intexsoft_sensor_usb_UsbAdapter_closeDevice(J
     // returned value libusb functions
     int ret;
 
+    if(dev_handle == NULL){
+        return result;
+    }
     // release interface
     ret = libusb_release_interface(dev_handle, 0);
 
