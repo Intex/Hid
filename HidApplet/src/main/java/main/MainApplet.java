@@ -33,23 +33,43 @@ public class MainApplet extends JApplet{
 	private JLabel indicator(){	
 		JLabel labelIndicator= new JLabel();
 
-		ImageIcon iconIndicatorTrue = new ImageIcon("true.jpg");
-		ImageIcon iconIndicatorFalse = new ImageIcon("false.jpg");
+		ImageIcon indicator;
+		String string;
 
-		if(ind==false) labelIndicator.setIcon(iconIndicatorFalse);
-		else labelIndicator.setIcon(iconIndicatorTrue);	
+		if(ind==false) {
+			indicator= new ImageIcon("false.jpg");
+			string="not connected";
+		}
+		else {
+			indicator = new ImageIcon("true.jpg");
+			string="connected";
+		}
+		
 		labelIndicator.setPreferredSize(new Dimension(22, 22));
+		labelIndicator.setIcon(indicator);
+		labelIndicator.setToolTipText(string);
+		
 		return labelIndicator;
 	}
 	
 	private JLabel validDate(){	
-		JLabel labelIndicator= new JLabel();
+		JLabel labelIndicator = new JLabel();
+		
+		String string;
+		ImageIcon indicator;
 
-		ImageIcon iconIndicatorTrue = new ImageIcon("correct.jpg");
-		ImageIcon iconIndicatorFalse = new ImageIcon("incorrect.jpg");
-
-		if(ind==false) labelIndicator.setIcon(iconIndicatorFalse);
-		else labelIndicator.setIcon(iconIndicatorTrue);	
+		if(ind==false){
+			indicator = new ImageIcon("incorrect.jpg");
+			string="the data is not correct";
+		}
+		else{
+			indicator = new ImageIcon("correct.jpg");
+			string="the data is correct";
+		}
+		
+		labelIndicator.setIcon(indicator);
+		labelIndicator.setToolTipText(string);
+		
 		return labelIndicator;
 	}
 
