@@ -25,7 +25,6 @@ public class SettingsPanel extends JPanel {
 	}
 
 	private JLabel help() {
-		// TODO Auto-generated method stub
 		JLabel jLabel = new JLabel();
 		String help = "Help...";
 		jLabel.setText(help);

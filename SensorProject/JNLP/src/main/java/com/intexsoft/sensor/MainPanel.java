@@ -1,11 +1,9 @@
 package com.intexsoft.sensor;
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,46 +13,52 @@ public class MainPanel extends JPanel {
 	private static final long serialVersionUID = 5605409120229305701L;
 
 	public static final int START_BUTTON_FILL = GridBagConstraints.HORIZONTAL;
-	public static final double START_BUTTON_WEIGHTX = 0.5;
+	public static final double START_BUTTON_WEIGHT_X = 0.5;
 	public static final Insets START_BUTTON_INSETS = new Insets(10, 20, 0, 20);
 	public static final int START_BUTTON_GRID_X = 0;
 	public static final int START_BUTTON_GRID_Y = 1;
 
 	public static final int VALID_INDICATOR_GRID_X = 3;
 	public static final int VALID_INDICATOR_GRID_Y = 1;
+	
+	public static final int CONNECTION_INFO_LABEL_IPAD_Y = 0;
+	public static final double CONNECTION_INFO_LABEL_WEIGHT_Y = 1D;
+	public static final int CONNECTION_INFO_LABEL_ANCHOR = GridBagConstraints.PAGE_END;
+	public static final int CONNECTION_INFO_LABEL_GRID_X = 1;
+	public static final int CONNECTION_INFO_LABEL_GRID_Y = 3;
+	public static final int CONNECTION_INFO_LABEL_GRID_WIDTH = 2;
+	
+	public static final int CONNECTION_INDICATOR_GRID_X = 3;
+	public static final int CONNECTION_INDICATOR_GRID_Y = 3;
+	
+	public static final int GRAPHIC_IPAD_Y = 40;
+	public static final double GRAPHIC_WEIGHT_X = 0D;
+	public static final int GRAHIC_GRID_WIDTH = 5;
+	public static final int GRAPHIC_GRID_X = 0;
+	public static final int GRAPHIC_GRID_Y = 2;	
 
 	private JButton startButton;
 	private Indicator validDataIndicator;
 	private Indicator connectionIndicator;
 	private JLabel connectionInfoLabel;
+	private JLabel graphic;
 
 	private GridBagConstraints gridBagConstraints = new GridBagConstraints();
 
 	public MainPanel(JButton startButton, Indicator validDataIndicator,
-			Indicator connectionIndicator, JLabel connectionInfoLabel) {
+			Indicator connectionIndicator, JLabel connectionInfoLabel, JLabel graphic) {
 		setLayout(new GridBagLayout());
 
 		addStartButton(startButton);
 		addValidDataIndicator(validDataIndicator);
 		addConnectionInfoLabel(connectionInfoLabel);
 		addConnectionIndicator(connectionIndicator);
-
-		gridBagConstraints.ipady = 40;
-		gridBagConstraints.weightx = 0.0;
-		gridBagConstraints.gridwidth = 5;
-		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = 2;
-		ImageIcon image = new ImageIcon("gr.jpg");
-		JLabel jLabel = new JLabel(image);
-		jLabel.setPreferredSize(new Dimension(600, 265));
-		
-		add(jLabel, gridBagConstraints);
-		
+		addGraphic(graphic);		
 	}
 
 	private void addStartButton(JButton startButton) {
 		gridBagConstraints.fill = START_BUTTON_FILL;
-		gridBagConstraints.weightx = START_BUTTON_WEIGHTX;
+		gridBagConstraints.weightx = START_BUTTON_WEIGHT_X;
 		gridBagConstraints.insets = START_BUTTON_INSETS;
 
 		gridBagConstraints.gridx = START_BUTTON_GRID_X;
@@ -72,21 +76,31 @@ public class MainPanel extends JPanel {
 	}
 
 	private void addConnectionInfoLabel(JLabel connectionInfoLabel) {
-		gridBagConstraints.ipady = 0;
-		gridBagConstraints.weighty = 1.0;
-		gridBagConstraints.anchor = GridBagConstraints.PAGE_END;
-		gridBagConstraints.gridx = 1;
-		gridBagConstraints.gridwidth = 2;
-		gridBagConstraints.gridy = 3;
+		gridBagConstraints.ipady = CONNECTION_INFO_LABEL_IPAD_Y;
+		gridBagConstraints.weighty = CONNECTION_INFO_LABEL_WEIGHT_Y;
+		gridBagConstraints.anchor = CONNECTION_INFO_LABEL_ANCHOR;
+		gridBagConstraints.gridx = CONNECTION_INFO_LABEL_GRID_X;
+		gridBagConstraints.gridy = CONNECTION_INFO_LABEL_GRID_Y;
+		gridBagConstraints.gridwidth = CONNECTION_INFO_LABEL_GRID_WIDTH;		
 		add(connectionInfoLabel, gridBagConstraints);
 		this.connectionInfoLabel = connectionInfoLabel;
 	}
 	
 	private void addConnectionIndicator(Indicator connectionIndicator) {
-		gridBagConstraints.gridx = 3;
-		gridBagConstraints.gridy = 3;
+		gridBagConstraints.gridx = CONNECTION_INDICATOR_GRID_X;
+		gridBagConstraints.gridy = CONNECTION_INDICATOR_GRID_Y;
 		add(connectionIndicator, gridBagConstraints);
 		this.connectionIndicator = connectionIndicator;
+	}
+	
+	private void addGraphic(JLabel graphic) {
+		gridBagConstraints.ipady = GRAPHIC_IPAD_Y;
+		gridBagConstraints.weightx = GRAPHIC_WEIGHT_X;
+		gridBagConstraints.gridwidth = GRAHIC_GRID_WIDTH;
+		gridBagConstraints.gridx = GRAPHIC_GRID_X;
+		gridBagConstraints.gridy = GRAPHIC_GRID_Y;
+		add(graphic, gridBagConstraints);
+		this.setGraphic(graphic);
 	}
 
 	public JButton getStartButton() {
@@ -127,6 +141,14 @@ public class MainPanel extends JPanel {
 
 	public void setGridBagConstraints(GridBagConstraints gridBagConstraints) {
 		this.gridBagConstraints = gridBagConstraints;
+	}
+
+	public JLabel getGraphic() {
+		return graphic;
+	}
+
+	public void setGraphic(JLabel graphic) {
+		this.graphic = graphic;
 	}	
 	
 }
