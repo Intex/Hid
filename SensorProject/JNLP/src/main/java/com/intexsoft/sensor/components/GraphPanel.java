@@ -1,4 +1,4 @@
-package com.intexsoft.sensor.graphics;
+package com.intexsoft.sensor.components;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -10,6 +10,7 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * User: sergey.berdashkevich
@@ -17,16 +18,24 @@ import javax.swing.*;
  */
 public class GraphPanel extends JPanel {
 
+    private final int GRAPHIC_IPAD_Y = 40;
+    private final double GRAPHIC_WEIGHT_X = 0D;
+    private final int GRAPHIC_GRID_WIDTH = 5;
+    private final int GRAPHIC_GRID_X = 0;
+    private final int GRAPHIC_GRID_Y = 2;
+
     private ChartPanel panel;
     private TimeSeries series;
+    private GridBagConstraints gridBagConstraints;
+
 
     public GraphPanel() {
 
         series = new TimeSeries("data");
-        TimeSeriesCollection dataset = new TimeSeriesCollection(series);
+        TimeSeriesCollection dataSet = new TimeSeriesCollection(series);
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart(
-                null, null, null, dataset, false, false, false);
+                null, null, null, dataSet, false, false, false);
 
         final XYPlot plot = chart.getXYPlot();
         ValueAxis axis = plot.getDomainAxis();
@@ -42,11 +51,25 @@ public class GraphPanel extends JPanel {
         chart.getXYPlot().setRenderer(xySplineRenderer);
     }
 
+    public void init(GridBagConstraints gridBagConstraints)  {
+        this.gridBagConstraints = gridBagConstraints;
+        this.gridBagConstraints.ipady = GRAPHIC_IPAD_Y;
+        this.gridBagConstraints.weightx = GRAPHIC_WEIGHT_X;
+        this.gridBagConstraints.gridwidth = GRAPHIC_GRID_WIDTH;
+        this.gridBagConstraints.gridx = GRAPHIC_GRID_X;
+        this.gridBagConstraints.gridy = GRAPHIC_GRID_Y;
+        this.gridBagConstraints.fill = GridBagConstraints.BOTH;
+    }
+
     public ChartPanel getPanel() {
         return panel;
     }
 
     public TimeSeries getSeries() {
         return series;
+    }
+
+    public GridBagConstraints getGridBagConstraints() {
+        return gridBagConstraints;
     }
 }

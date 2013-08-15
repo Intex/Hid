@@ -1,6 +1,6 @@
 package com.intexsoft.sensor;
 
-import com.intexsoft.sensor.graphics.GraphPanel;
+import com.intexsoft.sensor.components.GraphPanel;
 import com.intexsoft.sensor.graphics.WheelPanel;
 import com.intexsoft.sensor.usb.UsbAdapter;
 import org.jfree.data.time.Millisecond;

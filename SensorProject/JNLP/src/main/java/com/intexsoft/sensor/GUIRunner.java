@@ -1,13 +1,13 @@
 package com.intexsoft.sensor;
 
+import com.intexsoft.sensor.components.StartButton;
+import com.intexsoft.sensor.components.GraphPanel;
+import org.jfree.ui.RefineryUtilities;
+
 import java.awt.Dimension;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
+import javax.swing.UIManager.*;
 
 public class GUIRunner {
 	
@@ -17,15 +17,27 @@ public class GUIRunner {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
+        try {
+            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Nimbus L&F doesn't found.");
+        }
+
 		JFrame frame = new JFrame("jFrame");
 		
-		JButton startButton = new JButton();
+		StartButton startButton = new StartButton();
 
 		startButton.setName("Start/Stop");
 		startButton.setText("Start/Stop");
 		
 		Indicator validDataIndicator = new Indicator(null, "valid data",
-				URL_TO_IMAGES + "correct.jpg", URL_TO_IMAGES + "incorrect.jpg");
+				URL_TO_IMAGES + "correct.png", URL_TO_IMAGES + "incorrect.jpg");
 		
 		validDataIndicator.setOn(true);
 
@@ -37,12 +49,12 @@ public class GUIRunner {
 		connectionInfoLabel
 				.setText("Connected...Connected...Connected...Connected...");
 		
-		ImageIcon image = new ImageIcon(URL_TO_IMAGES + "gr.jpg");
+		/*ImageIcon image = new ImageIcon(URL_TO_IMAGES + "gr.jpg");
 		JLabel graphic = new JLabel(image);
-		graphic.setPreferredSize(new Dimension(600, 265));
+		graphic.setPreferredSize(new Dimension(300, 50));*/
 
 		JPanel main = new MainPanel(startButton, validDataIndicator,
-				connectionIndicator, connectionInfoLabel, graphic);
+				connectionIndicator, connectionInfoLabel, new GraphPanel());
 		JPanel settings = new SettingsPanel();
 
 		JTabbedPane jtp = new JTabbedPane();
@@ -52,7 +64,9 @@ public class GUIRunner {
 		frame.getContentPane().add(jtp);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		frame.setSize(640, 480);
+		frame.setSize(740, 620);
+        frame.setMinimumSize(new Dimension(740, 620));
+        RefineryUtilities.centerFrameOnScreen(frame);
 	}
 
 }
