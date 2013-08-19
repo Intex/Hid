@@ -208,8 +208,10 @@ public class Runner {
         public void run() {
             int position;
             stop = false;
+            UsbAdapter adapter = new UsbAdapter();
             while (!stop) {
-                position = getData();
+
+                position = getData(adapter);
                 HelloRunnable.position = position;
                 label.setText(String.valueOf(position));
 
@@ -219,16 +221,18 @@ public class Runner {
                 graphPanel.getSeries().add(new Millisecond(), position - 128);
 
                 try {
-                    sleep(20);
+                    sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
+//            adapter.closeDevice();
+
         }
 
-        public static int getData() {
+        public static int getData(UsbAdapter adapter) {
             int result = -301;
-            UsbAdapter adapter = new UsbAdapter();
+
             String s = adapter.openDevice();
 
             if (s != null) {
@@ -236,8 +240,6 @@ public class Runner {
             } else {
                 result = adapter.getPosition();
             }
-
-            adapter.closeDevice();
             return result;
         }
     }

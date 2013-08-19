@@ -12,7 +12,7 @@ import java.io.OutputStream;
 public class ClassPathLibraryLoader {
     private static final String[] HID_LIB_NAMES = {
             "/native/win/libusb-1.0.dll",
-            "/native/win/WheelInput.dll",
+            "/native/win/libUsbAdapter.dll",
             "/native/linux/libusb-1.0.so",
             "/native/linux/libUsbAdapter.so"
     };
@@ -37,6 +37,17 @@ public class ClassPathLibraryLoader {
                         fileOut.deleteOnExit();
 
                         if (!fileOut.exists()) {
+                            OutputStream out = new FileOutputStream(fileOut);
+                            byte[] buf = new byte[1024];
+                            int len;
+                            while ((len = in.read(buf)) > 0) {
+                                out.write(buf, 0, len);
+                            }
+                            out.close();
+                        }
+                        else    {
+                            fileOut.delete();
+
                             OutputStream out = new FileOutputStream(fileOut);
                             byte[] buf = new byte[1024];
                             int len;

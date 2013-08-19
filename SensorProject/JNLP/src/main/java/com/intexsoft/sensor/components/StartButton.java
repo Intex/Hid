@@ -1,6 +1,8 @@
 package com.intexsoft.sensor.components;
 
 import com.intexsoft.sensor.Runner;
+import com.intexsoft.sensor.usb.UsbAdapter;
+import org.jfree.data.time.Millisecond;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,24 +23,30 @@ public class StartButton extends JButton {
 
     private GridBagConstraints gridBagConstraints;
 
-    public StartButton()    {
-        ActionListener listener = new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-//                Runner.HelloRunnable helloRunnable = new Runner.HelloRunnable(label, GRAPH_PANEL);
-//                helloRunnable.start();
-            }
-        };
-
-        this.addActionListener(listener);
+    public StartButton() {
     }
 
-    public void init(GridBagConstraints gridBagConstraints)  {
+    public void init(GridBagConstraints gridBagConstraints, final JLabel label, final GraphPanel graphPanel) {
         this.gridBagConstraints = gridBagConstraints;
         this.gridBagConstraints.fill = StartButton.START_BUTTON_FILL;
         this.gridBagConstraints.weightx = StartButton.START_BUTTON_WEIGHT_X;
         this.gridBagConstraints.insets = StartButton.START_BUTTON_INSETS;
         this.gridBagConstraints.gridx = StartButton.START_BUTTON_GRID_X;
         this.gridBagConstraints.gridy = StartButton.START_BUTTON_GRID_Y;
+
+
+        ActionListener listener = new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (UsbData.isStop()) {
+                    final UsbData usbData = new UsbData(label, graphPanel);
+                    usbData.start();
+                } else {
+                    UsbData.stopGracefully();
+                }
+            }
+        };
+
+        this.addActionListener(listener);
     }
 
     public GridBagConstraints getGridBagConstraints() {

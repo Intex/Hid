@@ -35,6 +35,10 @@ public class MainPanel extends JPanel {
     public MainPanel(StartButton startButton, Indicator validDataIndicator,
                      Indicator connectionIndicator, JLabel connectionInfoLabel, GraphPanel graphPanel) {
         setLayout(new GridBagLayout());
+        this.graphPanel = graphPanel;
+        this.connectionIndicator = connectionIndicator;
+        this.connectionInfoLabel = connectionInfoLabel;
+        this.validDataIndicator = validDataIndicator;
 
         addStartButton(startButton);
         addValidDataIndicator(validDataIndicator);
@@ -44,7 +48,7 @@ public class MainPanel extends JPanel {
     }
 
     private void addStartButton(StartButton startButton) {
-        startButton.init(gridBagConstraints);
+        startButton.init(gridBagConstraints, connectionInfoLabel, graphPanel);
         add(startButton, startButton.getGridBagConstraints());
     }
 
@@ -52,8 +56,6 @@ public class MainPanel extends JPanel {
         gridBagConstraints.gridx = VALID_INDICATOR_GRID_X;
         gridBagConstraints.gridy = VALID_INDICATOR_GRID_Y;
         add(validDataIndicator, gridBagConstraints);
-        this.validDataIndicator = validDataIndicator;
-
     }
 
     private void addConnectionInfoLabel(JLabel connectionInfoLabel) {
@@ -64,19 +66,16 @@ public class MainPanel extends JPanel {
         gridBagConstraints.gridy = CONNECTION_INFO_LABEL_GRID_Y;
         gridBagConstraints.gridwidth = CONNECTION_INFO_LABEL_GRID_WIDTH;
         add(connectionInfoLabel, gridBagConstraints);
-        this.connectionInfoLabel = connectionInfoLabel;
     }
 
     private void addConnectionIndicator(Indicator connectionIndicator) {
         gridBagConstraints.gridx = CONNECTION_INDICATOR_GRID_X;
         gridBagConstraints.gridy = CONNECTION_INDICATOR_GRID_Y;
         add(connectionIndicator, gridBagConstraints);
-        this.connectionIndicator = connectionIndicator;
     }
 
     private void addGraphic(GraphPanel graphPanel) {
         graphPanel.init(gridBagConstraints);
         add(graphPanel.getPanel(), graphPanel.getGridBagConstraints());
-        this.graphPanel = graphPanel;
     }
 }
