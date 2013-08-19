@@ -1,7 +1,9 @@
 package com.intexsoft.sensor;
 
 import java.awt.Dimension;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -27,8 +29,14 @@ public class Indicator extends JLabel {
 	}
 
 	public void setOn(boolean on) {
-		ImageIcon icon = on ? new ImageIcon(getTrueIconPath()) : new ImageIcon(getFalseIconPath());
-		setIcon(icon);
+        ImageIcon icon = null;
+        try {
+            icon = on ? new ImageIcon(ImageIO.read(GUIRunner.class.getResourceAsStream("/" + getTrueIconPath()))) :
+                    new ImageIcon(ImageIO.read(GUIRunner.class.getResourceAsStream("/" + getFalseIconPath())));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        setIcon(icon);
 		this.on = on;
 	}
 

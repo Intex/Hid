@@ -86,7 +86,7 @@
                         <inputTemplateResourcePath>${project.basedir}</inputTemplateResourcePath>
                         <inputTemplate>/properties/jnlp-template.vm</inputTemplate>
                         <outputFile>app.jnlp</outputFile>
-                        <mainClass>com.intexsoft.sensor.Runner</mainClass>
+                        <mainClass>com.intexsoft.sensor.GUIRunner</mainClass>
                     </jnlp>
                     <sign>
                         <keystoreConfig>

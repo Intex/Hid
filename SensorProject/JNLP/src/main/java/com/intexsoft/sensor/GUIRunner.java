@@ -14,8 +14,8 @@ import javax.swing.*;
 import javax.swing.UIManager.*;
 
 public class GUIRunner {
-	
-	public static final String URL_TO_IMAGES = GUIRunner.class.getResource("/").getPath();
+
+//	public static final String URL_TO_IMAGES = GUIRunner.class.getResource("/").getPath();
 
     static BasicService basicService = null;
 	/**
@@ -55,7 +55,7 @@ public class GUIRunner {
             System.err.println("Lookup failed: " + e);
         }
 
-		JFrame frame = new JFrame("jFrame");
+		JFrame frame = new JFrame("Sensor");
 		
 		StartButton startButton = new StartButton();
 
@@ -63,12 +63,12 @@ public class GUIRunner {
 		startButton.setText("Start/Stop");
 		
 		Indicator validDataIndicator = new Indicator(null, "valid data",
-				URL_TO_IMAGES + "correct.png", URL_TO_IMAGES + "incorrect.jpg");
+				 "correct.png",  "incorrect.jpg");
 		
 		validDataIndicator.setOn(true);
 
 		Indicator connectionIndicator = new Indicator(new Dimension(22, 22),
-				"connection", URL_TO_IMAGES + "true.jpg", URL_TO_IMAGES + "false.jpg");
+				"connection", "true.jpg", "false.jpg");
 		connectionIndicator.setOn(true);
 
 		JLabel connectionInfoLabel = new JLabel();
