@@ -3,7 +3,7 @@ package hid.dao;
 import java.util.Date;
 import java.util.List;
 
-import hid.entity.groovy.Connection;
+import hid.entity.java.Connection;
 
 public interface ConnectionDAO extends AbstractDAO<Connection>{
 	

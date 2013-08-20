@@ -18,7 +18,7 @@ import hid.validation.annotation.FieldMatch;
 @Entity
 @Table(name = "ADMIN")
 @FieldMatch(first = "password", second = "confirmPassword")
-class Admin {
+public class Admin {
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)

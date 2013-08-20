@@ -1,6 +1,6 @@
 package hid.controller;
 
-import hid.entity.groovy.Admin;
+import hid.entity.java.Admin;
 import hid.service.AdminService;
 import hid.service.PasswordHasher;
 import hid.validation.AddAdminFormValidationGroup;

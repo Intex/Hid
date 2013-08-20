@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import hid.dao.DeviceDAO;
-import hid.entity.groovy.Device;
+import hid.entity.java.Device;
 import hid.service.DeviceService;
 
 

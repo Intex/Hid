@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import hid.dao.DeviceDAO;
-import hid.entity.groovy.Device;
+import hid.entity.java.Device;
 
 @Repository
 public class DeviceDAOImpl extends AbstractDAOImpl<Device> implements DeviceDAO {

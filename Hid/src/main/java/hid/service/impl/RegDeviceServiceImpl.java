@@ -1,7 +1,7 @@
 package hid.service.impl;
 
 import hid.dao.RegDeviceDAO;
-import hid.entity.groovy.RegDevice;
+import hid.entity.java.RegDevice;
 import hid.service.RegDeviceService;
 
 import java.util.Date;

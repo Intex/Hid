@@ -1,7 +1,7 @@
 package hid.dao.impl;
 
 import hid.dao.AdminDAO;
-import hid.entity.groovy.Admin;
+import hid.entity.java.Admin;
 
 import org.springframework.stereotype.Repository;
 

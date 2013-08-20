@@ -1,30 +1,45 @@
 package hid.entity.java;
 
+import java.util.Set;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "DEVICES")
-class Device {
-	
+public class Device {
+
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID_DEVICE", nullable = false)
 	private long id;
 
-	@NotEmpty
+	@NotNull
 	@Column(name = "VENDOR_ID", nullable = false)
 	private int vendorId;
-	
-	@NotEmpty
+
+	@NotNull
 	@Column(name = "PRODUCT_ID", nullable = false)
 	private int productId;
+
+	@OneToMany(mappedBy = "device")
+	private Set<Connection> connections;
+
+	public Set<Connection> getConnections() {
+		return connections;
+	}
+
+	public void setConnections(Set<Connection> connections) {
+		this.connections = connections;
+	}
 
 	public long getId() {
 		return id;
@@ -48,5 +63,5 @@ class Device {
 
 	public void setProductId(int productId) {
 		this.productId = productId;
-	}	
+	}
 }

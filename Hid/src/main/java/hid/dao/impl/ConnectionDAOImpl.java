@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import hid.dao.ConnectionDAO;
-import hid.entity.groovy.Connection;
+import hid.entity.java.Connection;
 @Repository
 public class ConnectionDAOImpl extends AbstractDAOImpl<Connection> implements ConnectionDAO {	
 

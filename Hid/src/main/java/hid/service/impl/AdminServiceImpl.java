@@ -3,7 +3,7 @@ package hid.service.impl;
 import javax.servlet.http.HttpSession;
 
 import hid.dao.AdminDAO;
-import hid.entity.groovy.Admin;
+import hid.entity.java.Admin;
 import hid.service.AdminService;
 
 import org.springframework.beans.factory.annotation.Autowired;

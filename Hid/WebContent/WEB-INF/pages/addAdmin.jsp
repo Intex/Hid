@@ -18,7 +18,6 @@ Confirm: <form:password path="confirmPassword" />
 		<br />
 		<input type="submit" value="add" />
 	</form:form>
-
 	<spring:bind path="admin.*">
 		<core:if test="${not empty status.errorMessages}">
 			<div class="error">

@@ -12,7 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "REG_DEVICES")
-class RegDevice {
+public class RegDevice {
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)

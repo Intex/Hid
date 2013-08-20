@@ -26,7 +26,7 @@ public class HibernateConfig {
 	public LocalSessionFactoryBuilder getSessionFactoryBuilder() {	
 		LocalSessionFactoryBuilder sessionFactoryBuilder = new LocalSessionFactoryBuilder(
 				getDataSource());
-		sessionFactoryBuilder.scanPackages("hid.entity.groovy");
+		sessionFactoryBuilder.scanPackages("hid.entity.java");
 		sessionFactoryBuilder.setProperty("hibernate.dialect",
 				"org.hibernate.dialect.HSQLDialect");
 		sessionFactoryBuilder.setProperty("hibernate.hbm2ddl.auto", "update");

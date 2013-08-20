@@ -2,7 +2,7 @@ package hid.service;
 
 import javax.servlet.http.HttpSession;
 
-import hid.entity.groovy.Admin;
+import hid.entity.java.Admin;
 
 public interface AdminService extends AbstractService<Admin>{
 	Admin findByLogin(String login);

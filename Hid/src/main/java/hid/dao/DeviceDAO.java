@@ -2,7 +2,7 @@ package hid.dao;
 
 import java.util.List;
 
-import hid.entity.groovy.Device;
+import hid.entity.java.Device;
 
 public interface DeviceDAO extends AbstractDAO<Device>{
 

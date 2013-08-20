@@ -8,40 +8,40 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import static javax.persistence.GenerationType.IDENTITY;
 
-
 @Entity
 @Table(name = "CONNECTION")
-class Connection {
+public class Connection {
 
-	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID_CONNECTION", nullable = false)
 	private long id;
-	
-	@NotEmpty
-	@Column(name = "ID_DEVICE", nullable = false)
-	private long deviceId;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "ID_DEVICE")
+	private Device device;
+
 	@NotEmpty
 	@Column(name = "DATE", nullable = false)
 	private Date date;
-	
+
 	@NotEmpty
 	@Column(name = "DATA", nullable = false)
 	private byte[] data;
-	
+
 	@NotEmpty
 	@Column(name = "COUNTRY", length = 32, nullable = false)
 	private String country;
-	
+
 	@NotEmpty
 	@Column(name = "CITY", length = 32, nullable = false)
 	private String city;
-	
+
 	@NotEmpty
 	@Column(name = "CONNECTION_TIME", nullable = false)
 	private int connectionTime;
@@ -54,12 +54,12 @@ class Connection {
 		this.id = id;
 	}
 
-	public long getDeviceId() {
-		return deviceId;
+	public Device getDevice() {
+		return device;
 	}
 
-	public void setDeviceId(long deviceId) {
-		this.deviceId = deviceId;
+	public void setDevice(Device device) {
+		this.device = device;
 	}
 
 	public Date getDate() {

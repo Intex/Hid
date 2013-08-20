@@ -1,7 +1,7 @@
 package hid.service.impl;
 
 import hid.dao.ConnectionDAO;
-import hid.entity.groovy.Connection;
+import hid.entity.java.Connection;
 import hid.service.ConnectionService;
 
 import java.util.Date;

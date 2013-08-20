@@ -8,6 +8,24 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form:form action="" commandName="device" method="POST">
+	Vendor id: <form:input path="vendorId" />
+		<br />
+	Product id: <form:input path="productId" />
+		<br />
+		<input type="submit" value="add" />
+</form:form>
+<spring:bind path="device.*">
+		<core:if test="${not empty status.errorMessages}">
+			<div class="error">
+				<core:forEach items="${status.errorMessages}" var="error">
+						${error}<br />
+				</core:forEach>
+			</div>
+		</core:if>
+	</spring:bind>
+
+
 <core:forEach items="${deviceList}" var="device">
 		${device.vendorId}
 		<br />
