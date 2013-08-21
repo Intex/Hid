@@ -2,7 +2,7 @@
 <jnlp
         spec="$jnlpspec"
         <!--Write address, where jar is located-->
-        codebase="http://192.168.0.93:8080/AdminUI/"
+        codebase="http://192.168.0.185:8080/AdminUI/"
         href="$outputFile">
     <information>
         #if($project.Name)
