@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Enter</title>
+<link rel="stylesheet" href="style.css" />
+<script trype="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	setTimeout(function () {
+		$('.error').fadeIn(500);
+	}, 1000);
+
+</script>
+</head>
+<body>
+<div id="wrapper">
+	<div class="error">
+		Ошибка!
+	</div>
+	<h1 id="logo">
+		<a href="#">
+			Title Of The Project
+		</a>		
+	</h1>
+	<form class="container big-form" id="login-form">
+		<div class="form-line">
+			<label for="login">Login</label>
+			<input type="text" class="form-text" name="login" id="login" size="20" />
+		</div>
+		<div class="form-line">
+			<label for="password">Password</label>
+			<input type="password" class="form-text" name="password" id="password" size="20" />
+		</div>
+		<div class="form-line">			
+			<span class="form-submit">
+				<input type="submit" value="Sign in"/>
+			</span>
+		</div>
+	</form>
+</div>
+</body>
+</html>
