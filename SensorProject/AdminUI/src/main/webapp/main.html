@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Devices</title>
+    <link rel="stylesheet" href="resources/css/style.css"/>
+    <script trype="text/javascript" src="resources/javascript/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="resources/javascript/hide.js"></script>
+    <script type="text/javascript" src="resources/javascript/project.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#tableDevices table').hide();
+        });
+        function getData() {
+            $.post(window.location.protocol + "//" +
+                    window.location.host + '/service/api/getData', function (data) {
+                var user = JSON.parse(data);
+                //json parse example
+//                $('#data').text(user.userName + " " + user.password);
+            });
+        }
+        ;
+    </script>
+</head>
+
+<body>
+<div id="header">
+    <h1 id="logo">Devices</h1>
+	<span id="back">	
+		<a href="#">Log out</a>
+	</span>
+</div>
+<div>
+    <div id="data"></div>
+
+    <!--For debug purpose-->
+    <!--<button onclick="getData()">asdasd</button>-->
+
+    <table id="tableDevices">
+        <tr class="table-header">
+            <th></th>
+            <th>Device</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td class="select-td"><input type="checkbox"/></td>
+            <td><a href="/html/statisticRecords.html">Device_454546675455554</a></td>
+            <td class="edit-td"><a href="html/editDevice.html">Edit</a></td>
+        </tr>
+        <tr>
+            <td class="select-td"><input type="checkbox"/></td>
+            <td><a href="/html/statisticRecords.html">Device_454546675455554</a></td>
+            <td class="edit-td"><a href="html/editDevice.html">Edit</a></td>
+        </tr>
+    </table>
+</div>
+<div align="center">
+	<span>
+		<input type="submit" value="Add"/>
+		<input type="submit" value="Delete"/>
+	</span>
+</div>
+</body>
+</html>

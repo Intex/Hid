@@ -18,8 +18,9 @@ public class Service {
     @RequestMapping("getData")
     @ResponseBody
     public String getData() {
+        Gson gson = new Gson();
 
-        return "Data";
+        return gson.toJson(new User("qwe", "zxcvcv"));
     }
 
     @RequestMapping("sendData")
