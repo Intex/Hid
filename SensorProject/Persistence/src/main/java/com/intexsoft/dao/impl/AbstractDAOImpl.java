@@ -8,13 +8,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class AbstractDAOImpl<E> implements AbstractDAO<E> {
 
 	private Class<E> entityClass;
 
-	//@Autowired
+	@Autowired
 	private SessionFactory sessionFactory;
 
 	protected AbstractDAOImpl(Class<E> entityClass) {		
