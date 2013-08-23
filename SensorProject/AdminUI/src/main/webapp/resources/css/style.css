@@ -51,8 +51,9 @@ span.form-submit {
 	float: right;
 	background-color: #2a95c5;
 	border: 1px solid #e5e5e5;
-	border-radius: 3px;
+	border-radius: 5px;
 	font-size: 12px;
+	margin: 5px 10px;
 }
 
 span.form-submit input {
@@ -68,7 +69,7 @@ span.form-submit:hover {
 	border: 1px solid #000;
 }
 
-#login-form{
+#login-form {
 	padding-top: 10px;
 }
 #logo {
@@ -416,6 +417,7 @@ input {
 	border-radius: 5px;
 	border-collapse: separate;
 	margin: auto;
+	width: 450px;
 }
 /*
 #tableDevices input{
@@ -440,10 +442,6 @@ input {
 	margin-bottom: 2px;
 }
 
-#information input {
-	width: auto; 
-	margin-left: 85%
-}
 
 #information img {
 	margin-left: 89%
@@ -466,4 +464,30 @@ input {
 	border-collapse: separate;
 	border-radius: 5px;
 	color: #000;
+}
+
+#checkbox {
+	width: 18px;
+    height: 18px;
+}
+
+/*#submit {
+	margin: 5px 10px;
+}*/
+
+#delete, #add, #export {
+	width: auto;
+	text-align: center;
+	float: inherit;
+}
+
+#export {
+	padding: 3px 5px;
+	margin: 0;
+
+	}
+
+#main-form {
+	width: 470px;
+	margin-top: 15px;
 }
