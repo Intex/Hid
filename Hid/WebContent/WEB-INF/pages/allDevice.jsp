@@ -29,8 +29,7 @@
 <core:forEach items="${deviceList}" var="device">
 		${device.vendorId}
 		<br />
-		${device.productId}
-		<br />
+		${device.productId}<a href="/Hid/addConnectionDevice?id=${device.id}">X</a><br />	
 </core:forEach>
 </body>
 </html>

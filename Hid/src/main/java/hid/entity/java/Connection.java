@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -26,12 +28,12 @@ public class Connection {
 	@JoinColumn(name = "ID_DEVICE")
 	private Device device;
 
-	@NotEmpty
-	@Column(name = "DATE", nullable = false)
+	//@NotEmpty
+	@Column(name = "DATE")//, nullable = false)
 	private Date date;
 
-	@NotEmpty
-	@Column(name = "DATA", nullable = false)
+	//@NotEmpty
+	@Column(name = "DATA")//, nullable = false)
 	private byte[] data;
 
 	@NotEmpty
@@ -42,7 +44,7 @@ public class Connection {
 	@Column(name = "CITY", length = 32, nullable = false)
 	private String city;
 
-	@NotEmpty
+	@NotNull
 	@Column(name = "CONNECTION_TIME", nullable = false)
 	private int connectionTime;
 
