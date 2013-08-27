@@ -475,16 +475,15 @@ input {
 	margin: 5px 10px;
 }*/
 
-#delete, #add, #export {
+#delete, #add, #export, #ok {
 	width: auto;
 	text-align: center;
 	float: inherit;
 }
 
-#export {
+#export, #ok {
 	padding: 3px 5px;
 	margin: 0;
-
 	}
 
 #main-form {
