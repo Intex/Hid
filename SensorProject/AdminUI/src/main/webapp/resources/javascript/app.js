@@ -1,18 +1,18 @@
 var APP = (function() {
-	
+
 	var APP = window.APP = window.APP || {
 		Routers : {},
 		Collections : {},
 		Models : {},
 		Views : {}
 	};
-	
+
 	APP.Routers.Router = Backbone.Router.extend({
 		routers: {
 			login: 'login',
 			index: 'login'
 		},
-		
+
 		initialize: function () {		
 			this.login();
 		},
@@ -22,7 +22,7 @@ var APP = (function() {
 			$('#wrapper').append(this.currentView.render().$el);
 		}
 	});
-	
+
 	APP.Views.LoginFormView = Backbone.View.extend({
 		render: function () {
 			this.$el = $($('#login-form-template').html());
@@ -44,11 +44,11 @@ var APP = (function() {
 			if (attrs.password === '') {
 				errors.password = "Please enter password";
 			}
-			
+
 			return errors;
 		}
 	});
-	
+
 	return APP;
 })();
 
