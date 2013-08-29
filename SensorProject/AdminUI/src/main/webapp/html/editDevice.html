@@ -3,17 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Edit</title>
-<link rel="stylesheet" href="../resources/css/style.css" />
 <script type="text/javascript"
 	src="../resources/javascript/jquery-1.10.2.min.js"></script>
 <script type="text/javascript"></script>
 <link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	href="../resources/css/datepicker.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script>
 	$(function() {
 		$("#datepicker").datepicker();
+		var cssLink = $('<link rel="stylesheet" />').attr('href',
+				'../resources/css/style.css?' + Math.random());
+		$('head').append(cssLink);
 	});
 </script>
 </head>
@@ -24,9 +26,9 @@
 			href="#">Log out</a>
 		</span> <br>
 	</div>
-	
-		<form class="container big-form">
-			<table id="tableEdit" class="container">
+	<div align="center">
+		<form class="container big-form" id="edit-form">
+			<table id="tableEdit">
 				<tr>
 					<th>Date of registration</th>
 					<td>21.12.2010</td>
@@ -38,10 +40,12 @@
 						</p></td>
 				</tr>
 			</table>
+
 			<span class="form-submit"> <input id="ok" type="submit"
 				value="Ok" />
 			</span>
+
+		</form>
 	</div>
-	</form>
 </body>
 </html>
