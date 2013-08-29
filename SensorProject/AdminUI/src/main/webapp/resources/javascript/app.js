@@ -25,8 +25,22 @@ var APP = (function() {
 	
 	APP.Views.LoginFormView = Backbone.View.extend({
 		render: function () {
-			this.$el = $($('#login-form-template').html());
+			this.setElement($('#login-form-template').html());
 			return this;
+		},
+		
+		validate: function (formData) {
+			for (var i = 0; i < formData.length; i++) {
+				
+			}
+		},
+		
+		events: {
+			submit: function () {
+				var admin = new APP.Models.Admin();
+				this.$el.ajaxSubmit();
+				return false;
+			}
 		}
 	});
 
@@ -55,3 +69,15 @@ var APP = (function() {
 $(function () {
 	var router = new APP.Routers.Router();
 });
+
+(function ($) {
+	$.fn.serilizeIndexedArray = function () {
+		var unidexedArray = this.serializeArray(),
+			indexedArray = {};
+
+		$.map(unidexedArray, function (el) {
+			indexedArray[el.name] = el.value;
+		});
+		return indexedArray;
+	}
+})(jQuery);
