@@ -9,8 +9,10 @@
 <script type="text/javascript" src="resources/javascript/underscore.js"></script>
 <script type="text/javascript" src="resources/javascript/doT.js"></script>
 <script type="text/javascript" src="resources/javascript/backbone.js"></script>
+<script type="text/javascript" src="resources/javascript/jquery.form.min.js"></script>
+<script type="text/javascript" src="resources/javascript/jquery.serializeIndexedArray.js"></script>
 
-<script type="text/template" id="errors-template">
+<script type="text/x-dot-template" id="errors-template">
 <div class="error">
 	{{~it.errors :value:index}}
 		{{=value}}<br />
@@ -18,7 +20,17 @@
 </div>
 </script>
 
-<script type="text/template" id="logo">
+<script type="text/x-dot-template" id="not-found-template">
+	<h1>
+		4<span id="turquoise">0</span>4
+	</h1>
+	<h6>Page not found!</h6>
+	<p>
+		<a href="../main.html"> Go to home </a>
+	</p>
+</script>
+
+<script type="text/x-dot-template" id="logo-template">
 <h1 id="logo">
 	<a href="#">
 		Title Of The Project
@@ -26,7 +38,7 @@
 </h1>
 </script>
 
-<script type="text/template" id="login-form-template">
+<script type="text/x-dot-template" id="login-form-template">
 <form class="container big-form" id="login-form">
 	<div class="form-line">
 		<label for="login">Login</label>
