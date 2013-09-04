@@ -419,7 +419,7 @@ input {
 }*/
 #tableEdit input {
 	margin: 10px 0px 0px 275px;
-	width: 80px;
+	width: 95px;
 }
 
 #tableEdit p {
@@ -444,7 +444,7 @@ input {
 	color: #21759b;
 }
 
-#login {
+#login, #datepicker {
 	margin: 0;
 }
 
@@ -494,4 +494,8 @@ input {
 
 #information {
 	padding-bottom: 35px;
+}
+
+#datepicker {
+	font-size: 17px;
 }
