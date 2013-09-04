@@ -22,6 +22,24 @@ var APP = (function() {
 			$('#wrapper').append(this.currentView.render().$el);
 		}
 	});
+	
+	APP.Views.ErrorView = Backbone.View.extend({
+		template: doT.template($('#errors-template').html()),
+		render: function () {
+			var errorEl = $(this.template({errors: this.model})),
+				wrapper = $('#wrapper');
+			wrapper
+				.children('.error')
+				.remove();
+			
+			wrapper
+				.append(errorEl.fadeIn());
+			
+			setTimeout(function () {
+				errorEl.fadeOut();
+			}, 5000);
+		}
+	});
 
 	APP.Views.LoginFormView = Backbone.View.extend({
 		render: function () {
@@ -29,16 +47,26 @@ var APP = (function() {
 			return this;
 		},
 		
-		validate: function (formData) {
-			for (var i = 0; i < formData.length; i++) {
-				
-			}
-		},
-		
 		events: {
 			submit: function () {
-				var admin = new APP.Models.Admin();
-				this.$el.ajaxSubmit();
+				var admin = new APP.Models.Admin(this.$el.serilizeIndexedArray()),
+					errorView,
+					errors = [];
+				
+				if (admin.get('login') === '') {
+					errors.push('login is required');
+				}
+				
+				if (admin.get('password') === '') {
+					errors.push('password is required');
+				}
+				
+				if (errors.length !== 0) {
+					errorView = new APP.Views.ErrorView({model: errors});
+					errorView.render();
+				} else {
+					this.$el.ajaxSubmit();
+				}
 				return false;
 			}
 		}
@@ -48,18 +76,6 @@ var APP = (function() {
 		defaults: {
 			login: '',
 			password: ''
-		},
-
-		validate: function (attrs) {
-			var errors = {};
-			if (attrs.login === '') {
-				errors.login = "Please enter login";
-			}
-			if (attrs.password === '') {
-				errors.password = "Please enter password";
-			}
-
-			return errors;
 		}
 	});
 
