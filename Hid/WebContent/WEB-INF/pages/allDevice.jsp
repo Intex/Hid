@@ -15,6 +15,7 @@
 		<br />
 		<input type="submit" value="add" />
 </form:form>
+
 <spring:bind path="device.*">
 		<core:if test="${not empty status.errorMessages}">
 			<div class="error">
@@ -27,9 +28,11 @@
 
 
 <core:forEach items="${deviceList}" var="device">
-		${device.vendorId}
-		<br />
-		${device.productId}<a href="/Hid/addConnectionDevice?id=${device.id}">X</a><br />	
+		id: ${device.id}<br />
+		vendorId: ${device.vendorId}<br />
+		productId: ${device.productId}<a href="/Hid/deleteDevice?id=${device.id}">X</a><br />
+		<a href="/Hid/${device.id}/connections">connections</a>
+		<hr />
 </core:forEach>
 </body>
 </html>

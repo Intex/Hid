@@ -2,6 +2,8 @@ package hid.config;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
+import org.hibernate.engine.profile.Fetch;
+import org.hibernate.engine.profile.FetchProfile;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
@@ -33,7 +35,7 @@ public class HibernateConfig {
 		sessionFactoryBuilder.setProperty("hibernate.dbcp.initialSize", "1");
 		sessionFactoryBuilder.setProperty("hibernate.show_sql", "true");		
 		return sessionFactoryBuilder;
-	}	
+	}
 
 	@Bean
 	public SessionFactory getSessionFactory() {

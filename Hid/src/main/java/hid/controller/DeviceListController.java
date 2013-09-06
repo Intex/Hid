@@ -2,6 +2,7 @@ package hid.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import hid.entity.java.Connection;
 import hid.entity.java.Device;
@@ -10,11 +11,15 @@ import hid.service.DeviceService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -38,6 +43,16 @@ public class DeviceListController {
 		return model;
 	}
 
+	@RequestMapping(value = "/{deviceId}/connections", method = RequestMethod.GET)
+	@Transactional(propagation = Propagation.REQUIRED)
+	public @ResponseBody Set<Connection> getConnections(@PathVariable long deviceId) {
+		//ModelAndView modelAndView = new ModelAndView("connections");		
+		Device device = deviceService.findById(deviceId);
+		System.out.println(device);
+		Set<Connection> connectionList = device.getConnections();
+		return connectionList;
+	}
+
 	@RequestMapping(value = "/allDevice", method = RequestMethod.POST)
 	public ModelAndView addDevice(@Validated Device device, BindingResult result) {
 		ModelAndView model = new ModelAndView("allDevice");
@@ -52,9 +67,15 @@ public class DeviceListController {
 	}
 
 	@RequestMapping(value = "/addConnectionDevice", method = RequestMethod.GET)
-	public String addConnetcion(@RequestParam long id) {
-		idConnectionDevice = id;
-		return "redirect:addConnection";
+	public String addConnetcion(Connection connection) {
+		connectionService.saveOrUpdate(connection);
+		return "redirect:allDevice";
+	}
+	
+	@RequestMapping(value = "/deleteDevice", method = RequestMethod.GET)
+	public String deleteDevice(@RequestParam long id) {
+		deviceService.delete(id);
+		return "redirect:allDevice";
 	}
 
 	@RequestMapping(value = "/addConnection", method = RequestMethod.GET)

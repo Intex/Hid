@@ -5,6 +5,7 @@ import java.util.Set;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -30,7 +31,7 @@ public class Device {
 	@Column(name = "PRODUCT_ID", nullable = false)
 	private int productId;
 
-	@OneToMany(mappedBy = "device")
+	@OneToMany(mappedBy = "device", fetch = FetchType.LAZY)
 	private Set<Connection> connections;
 
 	public Set<Connection> getConnections() {

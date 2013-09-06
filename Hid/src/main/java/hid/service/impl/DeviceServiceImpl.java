@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import hid.dao.DeviceDAO;
@@ -20,13 +21,13 @@ public class DeviceServiceImpl  extends AbstractServiceImpl<Device> implements D
 	}
 
 	@Override
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Device> findByVendorId(int vendorId) {
 		return getDAO().findByVendorId(vendorId);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Device> findByProductId(int productId) {
 		return getDAO().findByProductId(productId);
 	}

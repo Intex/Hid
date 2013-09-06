@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -20,25 +21,25 @@ public class ConnectionServiceImpl extends AbstractServiceImpl<Connection> imple
 	}
 
 	@Override
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Connection> findByCountry(String country) {
 		return getDAO().findByCountry(country);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Connection> findByCity(String city) {
 		return getDAO().findByCity(city);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Connection> findByDate(Date date) {
 		return getDAO().findByDate(date);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Connection> findByDeviceId(long deviceId) {
 		return getDAO().findByDeviceId(deviceId);
 	}
