@@ -31,7 +31,7 @@ public class Device {
 	@Column(name = "PRODUCT_ID", nullable = false)
 	private int productId;
 
-	@OneToMany(mappedBy = "device", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "device", fetch = FetchType.EAGER)
 	private Set<Connection> connections;
 
 	public Set<Connection> getConnections() {

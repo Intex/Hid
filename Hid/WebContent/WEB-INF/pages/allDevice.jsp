@@ -26,7 +26,6 @@
 		</core:if>
 	</spring:bind>
 
-
 <core:forEach items="${deviceList}" var="device">
 		id: ${device.id}<br />
 		vendorId: ${device.vendorId}<br />

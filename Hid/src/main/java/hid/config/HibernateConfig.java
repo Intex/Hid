@@ -31,7 +31,7 @@ public class HibernateConfig {
 		sessionFactoryBuilder.scanPackages("hid.entity.java");
 		sessionFactoryBuilder.setProperty("hibernate.dialect",
 				"org.hibernate.dialect.HSQLDialect");
-		sessionFactoryBuilder.setProperty("hibernate.hbm2ddl.auto", "update");
+		sessionFactoryBuilder.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 		sessionFactoryBuilder.setProperty("hibernate.dbcp.initialSize", "1");
 		sessionFactoryBuilder.setProperty("hibernate.show_sql", "true");		
 		return sessionFactoryBuilder;
