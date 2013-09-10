@@ -2,7 +2,12 @@ package hid.entity.java;
 
 import java.util.Set;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +36,11 @@ public class Device {
 	@Column(name = "PRODUCT_ID", nullable = false)
 	private int productId;
 
+	@SuppressWarnings("deprecation")
 	@OneToMany(mappedBy = "device", fetch = FetchType.EAGER)
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
+          org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private Set<Connection> connections;
 
 	public Set<Connection> getConnections() {

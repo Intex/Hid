@@ -5,6 +5,7 @@ import hid.entity.java.Device;
 import hid.service.ConnectionService;
 import hid.service.DeviceService;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,9 @@ public class DeviceListController {
 		ModelAndView modelAndView = new ModelAndView("connections");		
 		Device device = deviceService.findById(deviceId);
 		Set<Connection> connectionList = device.getConnections();
+		List<Connection> connectionAll = connectionService.getAll();
 		modelAndView.addObject("connection", emptyConnection);
+		modelAndView.addObject("connectionAll", connectionAll);
 		modelAndView.addObject("connectionList", connectionList);
 		modelAndView.addObject("deviceId", deviceId);
 		return modelAndView;
