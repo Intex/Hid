@@ -24,7 +24,7 @@ County: <form:input path="country" />
 Id: ${connection.id}<br />
 City: ${connection.city}<br />
 County: ${connection.country}<a
-			href="/Hid/deleteConnection?id=${connection.id}">X</a>
+			href="/Hid/${deviceId}/connections/delete?id=${connection.id}">X</a>
 		<br />
 		<hr />
 	</core:forEach>
@@ -34,7 +34,7 @@ County: ${connection.country}<a
 Id: ${connection.id}<br />
 City: ${connection.city}<br />
 County: ${connection.country}<a
-			href="/Hid/deleteConnection?id=${connection.id}">X</a>
+			href="/Hid/${deviceId}/connections/delete?id=${connection.id}">X</a>
 		<br />
 		<hr />
 	</core:forEach>

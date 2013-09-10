@@ -70,6 +70,12 @@ public class DeviceListController {
 		deviceService.delete(id);
 		return "redirect:allDevice";
 	}
+	
+	@RequestMapping(value = "/{deviceId}/connections/delete", method = RequestMethod.GET)
+	public String deleteConnection(@PathVariable long deviceId, @RequestParam("id") long connectionId) {
+		connectionService.delete(connectionId);
+		return "redirect:/" + deviceId + "/connections/";
+	}
 
 	@RequestMapping(value = "/{deviceId}/connections/add", method = RequestMethod.POST)
 	public String addConnection(@PathVariable long deviceId, Connection connection) {
@@ -77,6 +83,6 @@ public class DeviceListController {
 		device.setId(deviceId); // very 
 		connection.setDevice(device); // bad =(
 		deviceService.addConnection(connection);
-		return "redirect:" + "/" + deviceId + "/" + "connections/";
+		return "redirect:/" + deviceId + "/connections/";
 	}
 }
