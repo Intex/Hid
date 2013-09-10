@@ -73,8 +73,10 @@ public class DeviceListController {
 
 	@RequestMapping(value = "/{deviceId}/connections/add", method = RequestMethod.POST)
 	public String addConnection(@PathVariable long deviceId, Connection connection) {
-		connection.setDevice(deviceService.findById(deviceId));
-		connectionService.saveOrUpdate(connection);
+		Device device = new Device(); // it's
+		device.setId(deviceId); // very 
+		connection.setDevice(device); // bad =(
+		deviceService.addConnection(connection);
 		return "redirect:" + "/" + deviceId + "/" + "connections/";
 	}
 }

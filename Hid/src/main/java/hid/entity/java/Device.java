@@ -3,6 +3,8 @@ package hid.entity.java;
 import java.util.Set;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -35,10 +37,9 @@ public class Device {
 	@NotNull
 	@Column(name = "PRODUCT_ID", nullable = false)
 	private int productId;
-
-	@OneToMany(orphanRemoval=true, mappedBy = "device", fetch = FetchType.EAGER)
-	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-	@OnDelete(action=OnDeleteAction.CASCADE)
+	
+	@Fetch (FetchMode.SELECT)
+	@OneToMany(orphanRemoval = true, mappedBy = "device", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Connection> connections;
 
 	public Set<Connection> getConnections() {

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import hid.dao.DeviceDAO;
+import hid.entity.java.Connection;
 import hid.entity.java.Device;
 import hid.service.DeviceService;
 
@@ -21,13 +22,21 @@ public class DeviceServiceImpl  extends AbstractServiceImpl<Device> implements D
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional
 	public List<Device> findByVendorId(int vendorId) {
 		return getDAO().findByVendorId(vendorId);
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional
+	public void addConnection(Connection connection) {
+		Device device = findById(connection.getDevice().getId());
+		device.getConnections().add(connection);
+		saveOrUpdate(device);
+	}
+
+	@Override
+	@Transactional
 	public List<Device> findByProductId(int productId) {
 		return getDAO().findByProductId(productId);
 	}
