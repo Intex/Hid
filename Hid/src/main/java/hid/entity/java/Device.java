@@ -36,10 +36,8 @@ public class Device {
 	@Column(name = "PRODUCT_ID", nullable = false)
 	private int productId;
 
-	@SuppressWarnings("deprecation")
-	@OneToMany(mappedBy = "device", fetch = FetchType.EAGER)
-	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
-          org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
+	@OneToMany(orphanRemoval=true, mappedBy = "device", fetch = FetchType.EAGER)
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private Set<Connection> connections;
 
