@@ -30,7 +30,8 @@
 		id: ${device.id}<br />
 		vendorId: ${device.vendorId}<br />
 		productId: ${device.productId}<a href="/Hid/deleteDevice?id=${device.id}">X</a><br />
-		<a href="/Hid/${device.id}/connections">connections</a>
+		<a href="/Hid/${device.id}/connections">connections</a><br />
+		<a href="/Hid/${device.id}/regDevices">RegDevice</a>
 		<hr />
 </core:forEach>
 </body>

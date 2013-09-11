@@ -2,12 +2,8 @@ package hid.entity.java;
 
 import java.util.Set;
 
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -37,10 +33,22 @@ public class Device {
 	@NotNull
 	@Column(name = "PRODUCT_ID", nullable = false)
 	private int productId;
-	
-	@Fetch (FetchMode.SELECT)
+
+	@Fetch(FetchMode.SELECT)
 	@OneToMany(orphanRemoval = true, mappedBy = "device", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Connection> connections;
+
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(orphanRemoval = true, mappedBy = "device", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<RegDevice> regDevices;
+
+	public Set<RegDevice> getRegDevices() {
+		return regDevices;
+	}
+
+	public void setRegDevices(Set<RegDevice> regDevices) {
+		this.regDevices = regDevices;
+	}
 
 	public Set<Connection> getConnections() {
 		return connections;

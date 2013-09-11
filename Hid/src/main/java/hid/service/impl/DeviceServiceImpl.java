@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import hid.dao.DeviceDAO;
 import hid.entity.java.Connection;
 import hid.entity.java.Device;
+import hid.entity.java.RegDevice;
 import hid.service.DeviceService;
 
 
@@ -34,6 +34,14 @@ public class DeviceServiceImpl  extends AbstractServiceImpl<Device> implements D
 		device.getConnections().add(connection);
 		saveOrUpdate(device);
 	}
+	
+	@Override
+	@Transactional
+	public void addRegDevice(RegDevice regDevice) {
+		Device device = findById(regDevice.getDevice().getId());
+		device.getRegDevices().add(regDevice);
+		saveOrUpdate(device);
+	}
 
 	@Override
 	@Transactional
@@ -45,4 +53,6 @@ public class DeviceServiceImpl  extends AbstractServiceImpl<Device> implements D
 	public DeviceDAO getDAO() {
 		return (DeviceDAO) super.getDAO();
 	}
+
+
 }

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>addAdmin</title>
 </head>
-${sessionScope.login}
+<!--  ${sessionScope.login}-->
 <body>
 	<form:form action="" commandName="admin" method="POST">
 Login: <form:input path="login" />
