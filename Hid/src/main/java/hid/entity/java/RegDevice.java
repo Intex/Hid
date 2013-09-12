@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -28,10 +31,12 @@ public class RegDevice {
 
 	//@NotEmpty
 	@Column(name = "REG_DATE")//, nullable = false)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date registrationDate;
 
 	//@NotEmpty
 	@Column(name = "END_LICENSE")//, nullable = false)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date endLicenseDate;
 
 	public long getId() {
