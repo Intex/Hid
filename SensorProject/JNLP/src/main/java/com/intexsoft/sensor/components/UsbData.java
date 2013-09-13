@@ -1,11 +1,11 @@
 package com.intexsoft.sensor.components;
 
-import com.intexsoft.sensor.graphics.WheelPanel;
+
 import com.intexsoft.sensor.usb.UsbAdapter;
 import org.jfree.data.time.Millisecond;
 
 import javax.swing.*;
-import java.util.Random;
+
 
 /**
  * User: sergey.berdashkevich

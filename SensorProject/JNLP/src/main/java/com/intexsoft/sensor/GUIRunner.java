@@ -1,7 +1,6 @@
 package com.intexsoft.sensor;
 
-import com.intexsoft.sensor.components.StartButton;
-import com.intexsoft.sensor.components.GraphPanel;
+
 import org.jfree.ui.RefineryUtilities;
 
 import java.awt.Dimension;
@@ -57,30 +56,16 @@ public class GUIRunner {
 
 		JFrame frame = new JFrame("Sensor");
 		
-		StartButton startButton = new StartButton();
-
-		startButton.setName("Start/Stop");
-		startButton.setText("Start/Stop");
 		
-		Indicator validDataIndicator = new Indicator(null, "valid data",
-				 "correct.png",  "incorrect.jpg");
-		
-		validDataIndicator.setOn(true);
-
-		Indicator connectionIndicator = new Indicator(new Dimension(22, 22),
-				"connection", "true.jpg", "false.jpg");
-		connectionIndicator.setOn(true);
-
-		JLabel connectionInfoLabel = new JLabel();
-		connectionInfoLabel
-				.setText("Connected...Connected...Connected...Connected...");
 		
 		/*ImageIcon image = new ImageIcon(URL_TO_IMAGES + "gr.jpg");
 		JLabel graphic = new JLabel(image);
 		graphic.setPreferredSize(new Dimension(300, 50));*/
 
-		JPanel main = new MainPanel(startButton, validDataIndicator,
-				connectionIndicator, connectionInfoLabel, new GraphPanel());
+	
+		
+		JPanel main = new MainPanel();
+		
 		JPanel settings = new SettingsPanel();
 
 		JTabbedPane jtp = new JTabbedPane();

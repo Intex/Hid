@@ -1,4 +1,4 @@
-package com.intexsoft.sensor;
+package com.intexsoft.sensor.components;
 
 import java.awt.Dimension;
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import com.intexsoft.sensor.GUIRunner;
 
 public class Indicator extends JLabel {
 
@@ -15,6 +17,8 @@ public class Indicator extends JLabel {
 	public String trueIconPath;
 	
 	private boolean on;
+	
+	public Indicator(){}
 
 	public Indicator(Dimension dimension, String toolTipText, String trueIconPath, String falseIconPath) {
 		super();

@@ -1,5 +1,6 @@
 package com.intexsoft.sensor;
 
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -60,47 +61,37 @@ public class SettingsPanel extends JPanel {
 		JComboBox<String> box = new JComboBox<String>(data);
 		return box;
 	}
+	
+	public void setCell(GridBagConstraints gridBagConstaints,int x,int y,Component comp){
+		
+		gridBagConstaints.gridx = x;
+		gridBagConstaints.gridy = y;
+		add(comp, gridBagConstaints);
+	}
 
 	public SettingsPanel() {
 		setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
+		GridBagConstraints gridBagConstaints = new GridBagConstraints();
 		int n = 4 + new Random().nextInt(8);
 
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.2;
-		c.insets = new Insets(10, 20, 0, 20);
+		gridBagConstaints.fill = GridBagConstraints.HORIZONTAL;
+		gridBagConstaints.weightx = 0.2;
+		gridBagConstaints.insets = new Insets(10, 20, 0, 20);
 
-		c.gridx = 1;
-		c.gridy = 1;
-		add(selectLocation(), c);
-
-		c.gridx = 1;
-		c.gridy = 2;
-		add(changeCountry(), c);
-
-		c.weightx = 0.5;
-		c.gridx = 1;
-		c.gridy = 3;
-		add(changeCity(), c);
-
-		c.gridx = 2;
-		c.gridy = 3;
-		add(getButtonOk(), c);
-
-		c.gridx = 1;
-		c.gridy = 5;
-		add(selectDevice(), c);
-
-		c.gridx = 1;
-		c.gridy = 6;
-		add(arrayDevice(n), c);
-
-		c.ipady = 0;
-		c.weighty = 1.0;
-		c.anchor = GridBagConstraints.PAGE_END;
-		c.gridx = 1;
-		c.gridwidth = 2;
-		c.gridy = 7;
-		add(help(), c);
+		setCell(gridBagConstaints,1,1,selectLocation());
+		setCell(gridBagConstaints,1,2,changeCountry());
+		
+		gridBagConstaints.weightx = 0.5;
+		setCell(gridBagConstaints,1,3,changeCity());
+		setCell(gridBagConstaints,2,3,getButtonOk());
+		setCell(gridBagConstaints,1,5,selectDevice());
+		setCell(gridBagConstaints,1,6,arrayDevice(n));
+		
+		gridBagConstaints.ipady = 0;
+		gridBagConstaints.weighty = 1.0;
+		gridBagConstaints.anchor = GridBagConstraints.PAGE_END;
+		gridBagConstaints.gridwidth = 2;
+		setCell(gridBagConstaints,1,7,help());
+		
 	}
 }
