@@ -35,11 +35,11 @@ public class Device {
 	private int productId;
 
 	@Fetch(FetchMode.SELECT)
-	@OneToMany(orphanRemoval = true, mappedBy = "device", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(orphanRemoval = true, mappedBy = "device", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Connection> connections;
 
 	@Fetch(FetchMode.SELECT)
-	@OneToMany(orphanRemoval = true, mappedBy = "device", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(orphanRemoval = true, mappedBy = "device", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<RegDevice> regDevices;
 
 	public Set<RegDevice> getRegDevices() {

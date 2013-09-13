@@ -7,13 +7,19 @@
 	<welcome-file-list>
 		<welcome-file>/</welcome-file>
 	</welcome-file-list>
-	
-	
+
+
 	<!-- st -->
 	<context-param>
 		<param-name>contextClass</param-name>
 		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
 	</context-param>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>hid.config.AppConfig</param-value>
+	</context-param>
+
 
 	<listener>
 		<listener-class>hid.listener.WebAppPropertiesListener</listener-class>
@@ -33,7 +39,7 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<!-- package with config classes -->
-			<param-value>hid.config</param-value>
+			<param-value>hid.config.MvcConfig</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -42,6 +48,20 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<param-value>sessionFactory</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<!-- filter for encoding to UTF-8 -->
 
