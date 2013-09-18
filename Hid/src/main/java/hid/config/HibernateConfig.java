@@ -31,7 +31,8 @@ public class HibernateConfig {
 				"org.hibernate.dialect.HSQLDialect");
 		sessionFactoryBuilder.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 		sessionFactoryBuilder.setProperty("hibernate.dbcp.initialSize", "1");
-		sessionFactoryBuilder.setProperty("hibernate.show_sql", "true");		
+		sessionFactoryBuilder.setProperty("hibernate.show_sql", "true");
+		sessionFactoryBuilder.setProperty("configurationClass", "org.hibernate.cfg.AnnotationConfiguration");
 		return sessionFactoryBuilder;
 	}
 

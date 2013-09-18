@@ -25,6 +25,8 @@ public class RegDevice {
 	@Column(name = "ID_REG_DEVICE", nullable = false)
 	private long id;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_DEVICE")
 	private Device device;
 
 	//@NotEmpty
@@ -45,8 +47,7 @@ public class RegDevice {
 		this.id = id;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_DEVICE")
+	
 	public Device getDevice() {
 		return device;
 	}

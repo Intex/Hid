@@ -34,12 +34,15 @@ public class Device {
 	@Column(name = "PRODUCT_ID", nullable = false)
 	private int productId;
 
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(orphanRemoval = true, mappedBy = "device", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Connection> connections;
-	
-	private Set<RegDevice> regDevices;
 	
 	@Fetch(FetchMode.SELECT)
 	@OneToMany(orphanRemoval = true, mappedBy = "device", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<RegDevice> regDevices;
+	
+
 	public Set<RegDevice> getRegDevices() {
 		return regDevices;
 	}
@@ -48,8 +51,7 @@ public class Device {
 		this.regDevices = regDevices;
 	}
 	
-	@Fetch(FetchMode.SELECT)
-	@OneToMany(orphanRemoval = true, mappedBy = "device", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	
 	public Set<Connection> getConnections() {
 		return connections;
 	}
