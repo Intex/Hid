@@ -35,7 +35,7 @@ public class HibernateConfig {
 		return sessionFactoryBuilder;
 	}
 
-	@Bean(name = "sessionFactory")
+	@Bean(name = "sessionFactory" )
 	public SessionFactory getSessionFactory() {
 		return getSessionFactoryBuilder().buildSessionFactory();
 	}

@@ -61,6 +61,8 @@
 	<filter-mapping>
 		<filter-name>hibernateFilter</filter-name>
 		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
 	</filter-mapping>
 
 	<!-- filter for encoding to UTF-8 -->

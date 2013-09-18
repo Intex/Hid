@@ -24,9 +24,7 @@ public class Connection {
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID_CONNECTION", nullable = false)
 	private long id;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_DEVICE")
+	
 	private Device device;
 
 	//@NotEmpty
@@ -56,7 +54,9 @@ public class Connection {
 	public void setId(long id) {
 		this.id = id;
 	}
-
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_DEVICE")
 	public Device getDevice() {
 		return device;
 	}
