@@ -1,7 +1,7 @@
-package com.intexsoft.entity;
+package com.intexsoft.sensor.entity;
 
-import static javax.persistence.GenerationType.IDENTITY;
-//import com.intexsoft.validation.annotation.FieldMatch;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "ADMIN")
-//@FieldMatch(first = "password", second = "confirmPassword")
 public class Admin {
-
+	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID_ADMIN", nullable = false)

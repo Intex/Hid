@@ -1,6 +1,6 @@
-package com.intexsoft.dao.impl;
+package com.intexsoft.sensor.dao.impl;
 
-import com.intexsoft.dao.AbstractDAO;
+import com.intexsoft.sensor.dao.AbstractDAO;
 
 import java.util.List;
 

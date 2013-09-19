@@ -1,11 +1,11 @@
-package com.intexsoft.dao.impl;
+package com.intexsoft.sensor.dao.impl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.intexsoft.dao.DeviceDAO;
-import com.intexsoft.entity.Device;
+import com.intexsoft.sensor.dao.DeviceDAO;
+import com.intexsoft.sensor.entity.Device;
 
 
 @Repository

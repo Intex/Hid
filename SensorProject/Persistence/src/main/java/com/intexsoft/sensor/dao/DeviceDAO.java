@@ -1,8 +1,8 @@
-package com.intexsoft.dao;
+package com.intexsoft.sensor.dao;
 
 import java.util.List;
 
-import com.intexsoft.entity.Device;
+import com.intexsoft.sensor.entity.Device;
 
 public interface DeviceDAO extends AbstractDAO<Device>{
 

@@ -1,6 +1,6 @@
-package com.intexsoft.service;
+package com.intexsoft.sensor.service;
 
-import com.intexsoft.entity.Admin;
+import com.intexsoft.sensor.entity.Admin;
 
 
 public interface AdminService extends AbstractService<Admin>{

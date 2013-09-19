@@ -27,7 +27,7 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>
-                <prop key="show_sql">true</prop>
+                <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.cache.use_second_level_cache">true</prop>
                 <prop key="hibernate.cache.use_query_cache">true</prop>
                 <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
@@ -36,7 +36,7 @@
         </property>
         <property name="packagesToScan">
             <list>
-                <value>com.intexsoft.entity</value>
+                <value>com.intexsoft.sensor.entity</value>
             </list>
         </property>
     </bean>

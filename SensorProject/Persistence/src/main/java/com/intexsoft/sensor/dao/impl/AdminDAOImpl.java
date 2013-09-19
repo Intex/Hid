@@ -1,10 +1,10 @@
-package com.intexsoft.dao.impl;
+package com.intexsoft.sensor.dao.impl;
 
 
 import org.springframework.stereotype.Repository;
 
-import com.intexsoft.dao.AdminDAO;
-import com.intexsoft.entity.Admin;
+import com.intexsoft.sensor.dao.AdminDAO;
+import com.intexsoft.sensor.entity.Admin;
 
 
 @Repository

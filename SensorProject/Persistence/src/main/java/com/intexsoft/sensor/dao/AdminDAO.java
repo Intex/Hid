@@ -1,6 +1,6 @@
-package com.intexsoft.dao;
+package com.intexsoft.sensor.dao;
 
-import com.intexsoft.entity.Admin;
+import com.intexsoft.sensor.entity.Admin;
 
 public interface AdminDAO extends AbstractDAO<Admin> {
 	Admin findByLogin(String login);

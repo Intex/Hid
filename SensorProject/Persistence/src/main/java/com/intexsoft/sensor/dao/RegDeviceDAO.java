@@ -1,9 +1,9 @@
-package com.intexsoft.dao;
+package com.intexsoft.sensor.dao;
 
 import java.util.Date;
 import java.util.List;
 
-import com.intexsoft.entity.RegDevice;
+import com.intexsoft.sensor.entity.RegDevice;
 
 public interface RegDeviceDAO extends AbstractDAO<RegDevice> {
 

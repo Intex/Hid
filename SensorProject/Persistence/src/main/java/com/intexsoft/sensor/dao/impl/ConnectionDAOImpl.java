@@ -1,12 +1,12 @@
-package com.intexsoft.dao.impl;
+package com.intexsoft.sensor.dao.impl;
 
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.intexsoft.dao.ConnectionDAO;
-import com.intexsoft.entity.Connection;
+import com.intexsoft.sensor.dao.ConnectionDAO;
+import com.intexsoft.sensor.entity.Connection;
 
 @Repository
 public class ConnectionDAOImpl extends AbstractDAOImpl<Connection> implements ConnectionDAO {	

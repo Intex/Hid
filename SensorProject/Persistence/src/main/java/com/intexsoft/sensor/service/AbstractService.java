@@ -1,9 +1,10 @@
-package com.intexsoft.dao;
+package com.intexsoft.sensor.service;
 
 import java.util.List;
 
-public interface AbstractDAO<E> { // E is entity type
+import com.intexsoft.sensor.dao.AbstractDAO;
 
+public interface AbstractService<E> { // E is entity type
 	E findById(long id);
 	
 	List<E> getAll();
@@ -15,5 +16,7 @@ public interface AbstractDAO<E> { // E is entity type
 	List<E> findByProperty(String propertyName, Object propertyValue);
 	
 	E findUniqueByProperty(String propertyName, Object propertyValue);
+	
+	AbstractDAO<E> getDAO();
 
 }
