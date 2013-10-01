@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Registration</title>
+<link rel="stylesheet" href="../resources/css/style.css" />
+<script type="text/javascript"
+	src="../resources/javascript/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	setTimeout(function() {
+		$('.error').fadeIn(500);
+	}, 1000);
+</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="error">Ошибка!</div>
+		<form class="container big-form">
+			<div class="form-line">
+				<label for="login">Enter your username</label> <input type="text"
+					class="form-text" name="login" id="login" size="20" />
+			</div>
+			<div class="form-line">
+				<label for="password">Enter your password</label> <input
+					type="password" class="form-text" name="password" id="password"
+					size="20" />
+			</div>
+			<div class="form-line">
+				<label for="password">Please confirm your password</label> <input
+					type="password" class="form-text" name="password" id="password"
+					size="20" />
+			</div>
+			<div class="form-line">
+				<span class="form-submit"> <input id="submit" type="submit"
+					value="Sign up" />
+				</span>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
